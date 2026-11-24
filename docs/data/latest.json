@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T05:53:40.347Z",
+ "updated": "2026-11-24T06:01:08.048Z",
  "sets": [
   {
    "id": "trk",
@@ -88,7 +88,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   },
   {
    "id": "onemtg",
@@ -97,7 +97,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   },
   {
    "id": "hideout",
@@ -106,7 +106,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   },
   {
    "id": "5mana",
@@ -115,7 +115,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   },
   {
    "id": "wargames",
@@ -124,7 +124,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   },
   {
    "id": "mgw",
@@ -133,7 +133,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   },
   {
    "id": "cardboard",
@@ -142,7 +142,7 @@
    "shipping": null,
    "ok": true,
    "error": null,
-   "lastOk": "2026-11-24T05:53:40.347Z"
+   "lastOk": "2026-11-24T06:01:08.048Z"
   }
  ],
  "listings": [
@@ -155,8 +155,8 @@
    "product": "collector-box",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Collector's Editions - Set of 4",
@@ -167,8 +167,8 @@
    "product": "collector-commander-set",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Collector's Editions - Federation Fleet",
@@ -179,8 +179,8 @@
    "product": "collector-commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Collector's Editions - Klingon Fury",
@@ -191,8 +191,8 @@
    "product": "collector-commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Collector's Editions - Landing Party",
@@ -203,8 +203,8 @@
    "product": "collector-commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Collector's Editions - We Are the Borg",
@@ -215,8 +215,8 @@
    "product": "collector-commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Play Booster Box",
@@ -227,8 +227,8 @@
    "product": "play-box",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Draft Night",
@@ -239,8 +239,8 @@
    "product": "draft-night",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Set of 4",
@@ -251,8 +251,8 @@
    "product": "commander-set",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Federation Fleet",
@@ -263,8 +263,8 @@
    "product": "commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Klingon Fury",
@@ -275,8 +275,8 @@
    "product": "commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - Landing Party",
@@ -287,8 +287,8 @@
    "product": "commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Commander Deck - We Are the Borg",
@@ -299,8 +299,8 @@
    "product": "commander",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Bundle",
@@ -311,8 +311,8 @@
    "product": "bundle",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Scene Boxes - Set of 2",
@@ -323,8 +323,8 @@
    "product": "scene-box-set",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Scene Boxes - Divergent Timeline",
@@ -335,8 +335,8 @@
    "product": "scene-box",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Scene Boxes - Enterprise-Q",
@@ -347,8 +347,8 @@
    "product": "scene-box",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Collector Booster Pack",
@@ -359,8 +359,8 @@
    "product": "collector-pack",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Prerelease Kit",
@@ -371,8 +371,8 @@
    "product": "prerelease",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek TRK Play Booster Pack",
@@ -383,8 +383,8 @@
    "product": "play-pack",
    "shop": "greyogre",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Collector Booster Box",
@@ -395,8 +395,8 @@
    "product": "collector-box",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Collector's Edition Commander Decks - Set of 4",
@@ -407,8 +407,8 @@
    "product": "collector-commander-set",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Collector's Edition Commander Decks - Federation Fleet",
@@ -419,8 +419,8 @@
    "product": "collector-commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Collector's Edition Commander Decks - Landing Party",
@@ -431,8 +431,8 @@
    "product": "collector-commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Collector's Edition Commander Decks - Klingon Fury",
@@ -443,8 +443,8 @@
    "product": "collector-commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Collector's Edition Commander Decks - We Are the Borg",
@@ -455,8 +455,8 @@
    "product": "collector-commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Play Booster Box",
@@ -467,8 +467,8 @@
    "product": "play-box",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Draft Night",
@@ -479,8 +479,8 @@
    "product": "draft-night",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Scene Box (Set of 2)",
@@ -491,8 +491,8 @@
    "product": "scene-box-set",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Commander Decks - Set of 4",
@@ -503,8 +503,8 @@
    "product": "commander-set",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Commander Decks - Federation Fleet",
@@ -515,8 +515,8 @@
    "product": "commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Commander Decks - Landing Party",
@@ -527,8 +527,8 @@
    "product": "commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Commander Decks - Klingon Fury",
@@ -539,8 +539,8 @@
    "product": "commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRC] Star Trek Commander Decks - We Are the Borg",
@@ -551,8 +551,8 @@
    "product": "commander",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Bundle",
@@ -563,8 +563,8 @@
    "product": "bundle",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Collector Booster Pack",
@@ -575,8 +575,8 @@
    "product": "collector-pack",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Prerelease Kit",
@@ -587,8 +587,8 @@
    "product": "prerelease",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "[TRK] Star Trek Play Booster Pack",
@@ -599,140 +599,140 @@
    "product": "play-pack",
    "shop": "onemtg",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Beam Me Up Bundle - New",
-   "price": 111,
+   "price": 140,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-beam-me-up-bundle",
    "product": "beam-me-up",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Bundle - New",
-   "price": 62,
+   "price": 78,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-bundle",
    "product": "bundle",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector Booster Display - New",
-   "price": 459,
+   "price": 580,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-collector-booster-display",
    "product": "collector-box",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Draft Night - New",
-   "price": 111,
+   "price": 140,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-draft-night",
    "product": "draft-night",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Display - New",
-   "price": 159,
+   "price": 200,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-play-booster-display",
    "product": "play-box",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek Commander Deck - Federation Fleet - New",
-   "price": 72,
+   "price": 90,
    "inStock": false,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-commander-deck-federation-fleet",
    "product": "commander",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek Commander Deck - Klingon Fury - New",
-   "price": 72,
+   "price": 90,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-commander-deck-klingon-fury",
    "product": "commander",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek Commander Deck - Landing Party - New",
-   "price": 72,
+   "price": 90,
    "inStock": false,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-commander-deck-landing-party",
    "product": "commander",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek Commander Deck - We Are the Borg - New",
-   "price": 72,
+   "price": 90,
    "inStock": false,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-commander-deck-we-are-the-borg",
    "product": "commander",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek Scene Box - Divergent Timelines - New",
-   "price": 40,
+   "price": 50,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-scene-box-divergent-timelines",
    "product": "scene-box",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek Scene Box - Enterprise-Q - New",
-   "price": 40,
+   "price": 50,
    "inStock": true,
    "stock": null,
    "url": "https://hideoutcg.com/products/star-trek-scene-box-enterprise-q",
    "product": "scene-box",
    "shop": "hideout",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector Booster Pack",
@@ -743,8 +743,8 @@
    "product": "collector-pack",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Pack",
@@ -755,8 +755,8 @@
    "product": "play-pack",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - \"Beam Me Up\" Bundle",
@@ -767,8 +767,8 @@
    "product": "beam-me-up",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Bundle",
@@ -779,8 +779,8 @@
    "product": "bundle",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector Booster Box",
@@ -791,8 +791,8 @@
    "product": "collector-box",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Draft Night Box",
@@ -803,8 +803,8 @@
    "product": "draft-night",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box",
@@ -815,8 +815,8 @@
    "product": "play-box",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Scene Box Set of 2",
@@ -827,8 +827,8 @@
    "product": "scene-box-set",
    "shop": "5mana",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "MTG: STAR TREK – Collector Booster Box (A4389601)",
@@ -839,8 +839,8 @@
    "product": "collector-box",
    "shop": "wargames",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "MTG: STAR TREK – Bundle (A583406)",
@@ -851,8 +851,8 @@
    "product": "bundle",
    "shop": "wargames",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "MTG: STAR TREK – Play Booster Box (A016802)",
@@ -863,8 +863,8 @@
    "product": "play-box",
    "shop": "wargames",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "MTG: STAR TREK – Prerelease Pack (A335618)",
@@ -875,8 +875,8 @@
    "product": "prerelease",
    "shop": "wargames",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Collector Commander Deck Set of 4 Brand New Factory Sealed",
@@ -887,8 +887,8 @@
    "product": "collector-commander-set",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Commander Deck Set of 4 Brand New Factory Sealed",
@@ -899,8 +899,8 @@
    "product": "commander-set",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Scene Box Set of 2 Brand New Factory Sealed",
@@ -911,8 +911,8 @@
    "product": "scene-box-set",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Pre order) Magic The Gathering MTG Star Trek English Draft Night Box Brand New Factory Sealed",
@@ -923,8 +923,8 @@
    "product": "draft-night",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Pre order) Magic The Gathering MTG Star Trek English Beam Me Up Bundle Box Brand New Factory Sealed",
@@ -935,8 +935,8 @@
    "product": "beam-me-up",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Bundle Box Brand New Factory Sealed",
@@ -947,8 +947,8 @@
    "product": "bundle",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Collector Booster Box Brand New Factory Sealed",
@@ -959,8 +959,8 @@
    "product": "collector-box",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Play Booster Box Brand New Factory Sealed",
@@ -971,8 +971,8 @@
    "product": "play-box",
    "shop": "mgw",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Booster Fleet Bundle | Collector Booster Box + 2 x Play Booster Boxes (EN)",
@@ -983,8 +983,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box (EN) - Booster Box",
@@ -995,8 +995,8 @@
    "product": "play-box",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box (EN) - Booster Pack",
@@ -1007,8 +1007,8 @@
    "product": "play-pack",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector Booster Box + Collector’s Edition Commander Deck Combo (EN)",
@@ -1019,8 +1019,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector Booster Box + Play Booster Box Combo (EN)",
@@ -1031,8 +1031,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - Federation Fleet",
@@ -1043,8 +1043,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - Landing Party",
@@ -1055,8 +1055,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - Klingon Fury",
@@ -1067,8 +1067,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - We Are the Borg",
@@ -1079,8 +1079,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Box + Beam Me Up Bundle Combo (EN)",
@@ -1091,8 +1091,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector Booster Box (EN)",
@@ -1103,8 +1103,8 @@
    "product": "collector-box",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Play Booster Case: 6 Boxes (EN)",
@@ -1115,8 +1115,8 @@
    "product": "play-case",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector's Edition Commander Decks (EN) - Set of 4",
@@ -1127,8 +1127,8 @@
    "product": "collector-commander-set",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector's Edition Commander Decks (EN) - Federation Fleet",
@@ -1139,8 +1139,8 @@
    "product": "collector-commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector's Edition Commander Decks (EN) - Landing Party",
@@ -1151,8 +1151,8 @@
    "product": "collector-commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector's Edition Commander Decks (EN) - Klingon Fury",
@@ -1163,8 +1163,8 @@
    "product": "collector-commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Collector's Edition Commander Decks (EN) - We Are the Borg",
@@ -1175,8 +1175,8 @@
    "product": "collector-commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Commander Decks (EN) - Set of 4",
@@ -1187,8 +1187,8 @@
    "product": "commander-set",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Commander Decks (EN) - Federation Fleet",
@@ -1199,8 +1199,8 @@
    "product": "commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Commander Decks (EN) - Landing Party",
@@ -1211,8 +1211,8 @@
    "product": "commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Commander Decks (EN) - Klingon Fury",
@@ -1223,8 +1223,8 @@
    "product": "commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Commander Decks (EN) - We Are the Borg",
@@ -1235,8 +1235,8 @@
    "product": "commander",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Beam Me Up Bundle (EN)",
@@ -1247,8 +1247,8 @@
    "product": "beam-me-up",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Prerelease Kit (EN)",
@@ -1259,8 +1259,8 @@
    "product": "prerelease",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Scene Boxes: Set of 2 (EN)",
@@ -1271,8 +1271,8 @@
    "product": "scene-box-set",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - All Hands Bundle (EN)",
@@ -1283,8 +1283,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Mission 01: The Best of Both Worlds Bundle | Collector Booster Box + 2 x Play Booster Boxes",
@@ -1295,8 +1295,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Mission 02: The First Frontier Bundle | Collector Booster Box + Play Booster Box + 4 x Prerelease Kits",
@@ -1307,8 +1307,8 @@
    "product": "combo",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Draft Night Kit (EN)",
@@ -1319,8 +1319,8 @@
    "product": "draft-night",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   },
   {
    "title": "Star Trek - Bundle (EN)",
@@ -1331,8 +1331,8 @@
    "product": "bundle",
    "shop": "cardboard",
    "set": "trk",
-   "firstSeen": "2026-11-24T05:52:13.107Z",
-   "lastSeen": "2026-11-24T05:53:40.347Z"
+   "firstSeen": "2026-11-24T06:01:08.048Z",
+   "lastSeen": "2026-11-24T06:01:08.048Z"
   }
  ]
 }

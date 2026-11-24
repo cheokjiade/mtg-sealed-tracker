@@ -57,6 +57,8 @@ Add an entry to `shops` in `config.json` (its `url` is the homepage), then add i
 ```
 
 `soldOut` (its presence means out of stock) and `stock` (text such as "Only 3 left") are optional.
+Pages are followed through the next-page link (`rel="next"` or `aria-label="Next"` by default; set `selectors.next` if a
+site differs), up to 20 pages. Shopify and WooCommerce paginate through their APIs.
 When a card shows a price range, the scraper opens the product page and reads each variant from its schema.org JSON-LD.
 A site that fits none of these types gets a new function in `adapters.mjs`, named after its `type`.
 
@@ -79,6 +81,12 @@ product is being skipped.
 
 - `docs/data/latest.json`: current listing per URL (set, product, price, inStock, stock, firstSeen, lastSeen) and shop status.
 - `docs/data/history.json`: one row only when a listing's price or stock state changes, so it stays small.
+
+A run only saves (and the Action only commits) when a listing, price, stock state or shop status changed, or once a
+day as a heartbeat, so `updated` is never more than about a day old.
+
+All prices are SGD. Shops geo-convert by visitor IP and GitHub's runners are in the US, so the scraper asks for the
+Singapore market and **fails a shop rather than record prices in another currency**.
 
 If a shop's scrape fails, its last known listings are kept. A listing that disappears from a shop is marked out of stock.
 

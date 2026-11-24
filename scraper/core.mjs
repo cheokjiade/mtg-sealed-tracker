@@ -7,6 +7,16 @@ export function classify(title, set, products) {
   return products.find(p => new RegExp(p.match, 'i').test(title))?.id ?? null;
 }
 
+// Save (and so commit) only when something other than timestamps changed, or as a daily heartbeat
+// so the dashboard can show the data is still being checked.
+const TIMESTAMPS = new Set(['updated', 'lastSeen', 'lastOk']);
+const HEARTBEAT_MS = 20 * 3600e3; // runs are 6h apart; 20h (not 24h) tolerates Actions start delays
+export function shouldSave(prev, next, now) {
+  const strip = o => JSON.stringify(o, (k, v) => (TIMESTAMPS.has(k) ? undefined : v));
+  if (!prev.updated || strip(prev) !== strip(next)) return true;
+  return Date.parse(now) - Date.parse(prev.updated) >= HEARTBEAT_MS;
+}
+
 // latest:  { listings: [...] } from the previous run (or empty)
 // results: [{ shop, set, ok, listings }] from this run, one per shop × set source
 // History only gets a row when a listing's price or stock state changes, keeping the file small.

@@ -4,9 +4,14 @@
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+// Shops geo-convert prices by visitor IP, and GitHub's runners are in the US.
+// These cookies ask Shopify for its Singapore market; checkCurrency() verifies that it complied.
+const SG_COOKIES = 'localization=SG; cart_currency=SGD';
+export const CURRENCY = 'SGD';
+
 async function getJson(url, tries = 4) {
   for (let i = 0; ; i++) {
-    const r = await fetch(url, { headers: { 'user-agent': UA, accept: 'application/json' } });
+    const r = await fetch(url, { headers: { 'user-agent': UA, accept: 'application/json', cookie: SG_COOKIES } });
     if (r.ok) return r.json();
     // Shopify answers 429 when hit too often; back off 5s, 10s, 20s...
     if ((r.status !== 429 && r.status < 500) || i >= tries) throw new Error(`HTTP ${r.status} ${url}`);
@@ -17,6 +22,9 @@ async function getJson(url, tries = 4) {
 // Shopify stores: "url" is a collection page; its /products.json lists every product with variants.
 async function shopify(shop) {
   const { origin } = new URL(shop.url);
+  // products.json carries no currency field; the cart reports the currency this session is priced in.
+  const { currency } = await getJson(`${origin}/cart.js`);
+  if (currency !== CURRENCY) throw new Error(`prices served in ${currency}, not ${CURRENCY}; refusing to record them`);
   const items = [];
   for (let page = 1; ; page++) {
     const { products } = await getJson(`${shop.url}/products.json?limit=250&page=${page}`);
@@ -39,6 +47,7 @@ async function woocommerce(shop) {
     const products = await getJson(`${shop.url}/wp-json/wc/store/products?search=${encodeURIComponent(shop.search)}&per_page=100&page=${page}`);
     for (const p of products) items.push({
       title: decodeEntities(p.name),
+      ...assertCurrency(p.prices.currency_code),
       price: Number(p.prices.price) / 10 ** p.prices.currency_minor_unit,
       inStock: p.is_in_stock,
       stock: p.low_stock_remaining ?? null,
@@ -48,6 +57,13 @@ async function woocommerce(shop) {
   }
 }
 
+const assertCurrency = code => {
+  if (code && code !== CURRENCY) throw new Error(`prices served in ${code}, not ${CURRENCY}; refusing to record them`);
+  return {};
+};
+// Price text like "US$ 459" or "RM 300" means the page was geo-converted.
+const FOREIGN_MONEY = /US\$|USD|A\$|AUD|RM|MYR|€|£|¥|₩/;
+
 const decodeEntities = s => s
   .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(n))
   .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;|&apos;/g, "'");
@@ -55,24 +71,34 @@ const decodeEntities = s => s
 // Any rendered HTML listing page, driven by CSS selectors in config.json:
 //   item (one per product card), title, price, link, optional soldOut (present = out of stock),
 //   optional stock (element whose text holds a quantity, e.g. "Only 3 left").
-// ponytail: single page only; add a "pages" URL list to the config when a shop paginates.
+//   optional next (the next-page link; default covers rel="next" and aria-label="Next").
+const NEXT = 'a[rel="next"], link[rel="next"], a[aria-label="Next" i], a[aria-label="Next page" i]';
+const MAX_PAGES = 20;
 async function playwright(shop, browser) {
   const page = await browser.newPage({ userAgent: UA });
   try {
-    await page.goto(shop.url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
-    await page.waitForSelector(shop.selectors.item, { timeout: 30_000 });
-    const raw = await page.$$eval(shop.selectors.item, (els, s) => els.map(el => {
-      const q = sel => sel && el.querySelector(sel);
-      return {
-        title: q(s.title)?.textContent.trim().replace(/\s+/g, ' '),
-        price: q(s.price)?.textContent,
-        url: q(s.link)?.href ?? el.closest('a')?.href,
-        soldOut: !!q(s.soldOut),
-        stock: q(s.stock)?.textContent ?? null,
-      };
-    }), shop.selectors);
+    const raw = [];
+    const visited = new Set();
+    for (let url = shop.url; url && !visited.has(url) && visited.size < MAX_PAGES;) {
+      visited.add(url);
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+      await page.waitForSelector(shop.selectors.item, { timeout: 30_000 });
+      raw.push(...await page.$$eval(shop.selectors.item, (els, s) => els.map(el => {
+        const q = sel => sel && el.querySelector(sel);
+        return {
+          title: q(s.title)?.textContent.trim().replace(/\s+/g, ' '),
+          price: q(s.price)?.textContent,
+          url: q(s.link)?.href ?? el.closest('a')?.href,
+          soldOut: !!q(s.soldOut),
+          stock: q(s.stock)?.textContent ?? null,
+        };
+      }), shop.selectors));
+      url = await page.$eval(shop.selectors.next ?? NEXT, a => a.href).catch(() => null);
+    }
+    if (visited.size === MAX_PAGES) console.warn(`  ${shop.id}: stopped at ${MAX_PAGES} pages`);
     const items = [];
     for (const r of raw.filter(r => r.title && r.price)) {
+      if (FOREIGN_MONEY.test(r.price)) assertCurrency(r.price.match(FOREIGN_MONEY)[0]);
       // "S$ 7.00 - S$ 200.00" means variants (pack vs box): read each from the product page.
       if (moneyCount(r.price) > 1) { items.push(...await jsonLdVariants(page, r.url)); continue; }
       items.push({
@@ -98,6 +124,7 @@ async function jsonLdVariants(page, url) {
   if (!group) throw new Error(`no product JSON-LD at ${url}`);
   return (group.hasVariant ?? [group]).map(v => {
     const offer = [v.offers].flat()[0];
+    assertCurrency(offer.priceCurrency);
     return {
       title: v.name,
       price: Number(offer.price),

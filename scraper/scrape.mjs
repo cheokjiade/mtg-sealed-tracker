@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { adapters } from './adapters.mjs';
-import { classify, merge } from './core.mjs';
+import { classify, merge, shouldSave } from './core.mjs';
 
 const root = new URL('../', import.meta.url);
 const dataDir = new URL('docs/data/', root);
@@ -64,6 +64,11 @@ const out = {
   }),
   listings: merged.listings,
 };
+
+if (!shouldSave(latest, out, now)) {
+  console.log('no changes since last save, and heartbeat not due: data left untouched');
+  process.exit(results.some(r => r.ok) ? 0 : 1);
+}
 
 await mkdir(dataDir, { recursive: true });
 await writeFile(new URL('latest.json', dataDir), JSON.stringify(out, null, 1));

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { classify, merge } from './core.mjs';
-import { parseMoney } from './adapters.mjs';
+import { classify, merge, shouldSave } from './core.mjs';
+import { parseMoney, CURRENCY } from './adapters.mjs';
 
 const { products, sets, shops } = JSON.parse(readFileSync(new URL('../config.json', import.meta.url)));
 const trk = sets.find(s => s.id === 'trk');
@@ -37,6 +37,7 @@ assert.equal(new Set(ids).size, ids.length, 'product ids must be unique');
 for (const s of sets) for (const shop of Object.keys(s.sources)) assert.ok(shops.some(x => x.id === shop), `set ${s.id}: unknown shop ${shop}`);
 
 assert.equal(parseMoney('S$ 1,620.50'), 1620.5);
+assert.equal(CURRENCY, 'SGD');
 
 // merge: change-only history, failed shop keeps data, delisted -> out of stock, sets kept apart
 const L = (url, price, inStock) => ({ url, price, inStock, title: url, product: 'play-box' });
@@ -51,5 +52,14 @@ assert.equal(d.listings.length, 3);
 assert.equal(d.listings.find(l => l.url === 'u3').set, 'y');
 const e = merge(d, [{ shop: 's', set: 'x', ok: true, listings: [L('u1', 90, true), L('u2', 50, false)] }, { shop: 's', set: 'y', ok: false }], 't4');
 assert.deepEqual(e.history.map(h => [h.url, h.price]), [['u1', 90]]);
+
+// shouldSave: timestamps alone don't count, real changes do, heartbeat after 20h
+const snap = (updated, price, lastSeen = updated) => ({ updated, shops: [{ id: 's', ok: true, lastOk: updated }], listings: [{ url: 'u', price, lastSeen }] });
+const t0 = '2026-01-01T00:00:00Z', t6 = '2026-01-01T06:00:00Z', t20 = '2026-01-01T20:00:00Z';
+assert.equal(shouldSave({ listings: [] }, snap(t0, 100), t0), true); // first run
+assert.equal(shouldSave(snap(t0, 100), snap(t6, 100), t6), false); // only timestamps moved
+assert.equal(shouldSave(snap(t0, 100), snap(t6, 90), t6), true); // price changed
+assert.equal(shouldSave(snap(t0, 100), { ...snap(t6, 100), shops: [{ id: 's', ok: false, error: 'x' }] }, t6), true); // shop failed
+assert.equal(shouldSave(snap(t0, 100), snap(t20, 100), t20), true); // daily heartbeat
 
 console.log('all checks passed');
