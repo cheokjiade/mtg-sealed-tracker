@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTG Star Trek: Singapore sealed price monitor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10); --good: #006300; --bad: #d03b3b;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --good: #0ca30c; --bad: #e66767;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #0ca30c; --s7: #9085e9; --s8: #e66767;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1280px; margin: 0 auto; padding: 24px 20px 64px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 0 0 12px; }
+.sub { color: var(--ink-2); margin: 0 0 20px; }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+.shops { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--ring); border-radius: 999px; color: var(--ink); text-decoration: none; font-size: 13px; }
+.swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.ok { color: var(--good); } .err { color: var(--bad); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { color: var(--ink-2); font-weight: 600; font-size: 12px; }
+td.num, th.num { text-align: right; }
+#listings td:nth-child(2) { white-space: normal; min-width: 240px; }
+#matrix tbody tr { cursor: pointer; }
+#matrix tbody tr:hover, #matrix tbody tr.sel { background: var(--grid); }
+.best { font-weight: 700; }
+.best::after { content: " ★"; color: var(--ink-2); font-weight: 400; }
+.oos { color: var(--muted); text-decoration: line-through; }
+.dim { color: var(--muted); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.row h2 { margin: 0; }
+select, label { font: inherit; color: var(--ink); }
+select { background: var(--surface); border: 1px solid var(--axis); border-radius: 8px; padding: 4px 8px; }
+.chart-wrap { position: relative; height: 340px; }
+td a { color: var(--ink); }
+.tag { font-size: 12px; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--ring); }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 0; color: var(--ink-2); font-size: 13px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.note { color: var(--muted); font-size: 12px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>MTG × Star Trek: Singapore sealed prices</h1>
+  <p class="sub" id="updated">Loading…</p>
+
+  <section class="card">
+    <h2>Shops</h2>
+    <div class="shops" id="shops"></div>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <h2>Cheapest price per shop (SGD)</h2>
+      <label title="Adds each shop's shipping fee (set in config.json) unless the item reaches its free-shipping threshold"><input type="checkbox" id="ship"> Include shipping</label>
+    </div>
+    <div class="scroll"><table id="matrix"></table></div>
+    <p class="note">★ = cheapest in-stock offer. <span class="oos">Struck-through</span> = out of stock. Click a row for history and listings.</p>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <h2 id="detail-title">Price history</h2>
+      <select id="product" aria-label="Product"></select>
+    </div>
+    <div class="chart-wrap"><canvas id="chart" aria-label="Price history by shop" role="img"></canvas></div>
+    <div class="legend" id="legend"></div>
+    <p class="note">Each line is that shop's cheapest listing for the product. Dashed = only out-of-stock listings at that time.</p>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <h2>Listings</h2>
+      <label><input type="checkbox" id="instock"> In stock only</label>
+    </div>
+    <div class="scroll"><table id="listings"></table></div>
+  </section>
+</main>
+
+<script>
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const safeUrl = u => /^https?:\/\//.test(u) ? u : '#';
+const money = n => 'S$' + n.toLocaleString('en-SG', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+const fmtDate = t => new Date(t).toLocaleString('en-SG', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+const stockText = l => !l.inStock ? 'Out of stock' : l.stock ? `Only ${l.stock} left` : 'In stock';
+
+let data, hist, chart;
+const state = { product: null, ship: false };
+
+// Shipping per shop from config.json: { "cost": 8, "freeFrom": 150 } (free at or above freeFrom).
+const shipFee = (shopId, price) => {
+  const s = data.shopById[shopId].shipping;
+  if (!state.ship || !s) return 0;
+  return s.freeFrom != null && price >= s.freeFrom ? 0 : s.cost;
+};
+const total = l => l.price + shipFee(l.shop, l.price);
+
+Promise.all([fetch('data/latest.json').then(r => r.json()), fetch('data/history.json').then(r => r.json())]).then(([d, h]) => {
+  data = d; hist = h;
+  // Color follows the shop (fixed by config order), never its rank.
+  data.shops.forEach((s, i) => s.color = css(`--s${(i % 8) + 1}`)); // ponytail: >8 shops reuse hues; fold extras into "Other" if that happens
+  data.shopById = Object.fromEntries(data.shops.map(s => [s.id, s]));
+  data.present = data.products.filter(p => data.listings.some(l => l.product === p.id))
+    .sort((a, b) => (a.id === 'combo') - (b.id === 'combo')); // combo matches first in config but reads best last
+  document.getElementById('updated').textContent =
+    `${data.listings.length} listings across ${data.shops.length} shops · updated ${fmtDate(data.updated)}`;
+  renderShops(); renderMatrix();
+  const sel = document.getElementById('product');
+  sel.innerHTML = data.present.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  sel.onchange = () => select(sel.value);
+  document.getElementById('instock').onchange = renderListings;
+  document.getElementById('ship').onchange = e => { state.ship = e.target.checked; renderMatrix(); select(state.product); };
+  select(location.hash.slice(1) || 'collector-box');
+});
+
+function renderShops() {
+  document.getElementById('shops').innerHTML = data.shops.map(s => `
+    <a class="chip" href="${safeUrl(s.url)}" target="_blank" rel="noopener" title="${esc(s.error || 'Last OK ' + (s.lastOk ? fmtDate(s.lastOk) : 'never'))}">
+      <span class="swatch" style="background:${s.color}"></span>${esc(s.name)}
+      <span class="dim">${s.shipping ? `ship ${money(s.shipping.cost)}${s.shipping.freeFrom != null ? `, free ≥ ${money(s.shipping.freeFrom)}` : ''}` : 'ship ?'}</span>
+      ${s.ok === false ? '<span class="err">⚠ failed</span>' : '<span class="ok">✓</span>'}
+    </a>`).join('');
+}
+
+// Cheapest listing of a product at a shop: in-stock first, else cheapest out-of-stock.
+function cheapest(listings) {
+  const pool = listings.some(l => l.inStock) ? listings.filter(l => l.inStock) : listings;
+  return pool.reduce((a, b) => (total(b) < total(a) ? b : a), pool[0]);
+}
+
+function renderMatrix() {
+  const head = `<thead><tr><th>Product</th>${data.shops.map(s => `<th class="num"><span class="swatch" style="display:inline-block;background:${s.color}"></span> ${esc(s.name)}</th>`).join('')}<th class="num">In stock at</th></tr></thead>`;
+  const rows = data.present.map(p => {
+    const cells = data.shops.map(s => cheapest(data.listings.filter(l => l.product === p.id && l.shop === s.id)));
+    const live = cells.filter(c => c?.inStock);
+    const best = live.length ? Math.min(...live.map(total)) : null;
+    const td = cells.map(c => !c ? '<td class="num dim">–</td>'
+      : `<td class="num ${!c.inStock ? 'oos' : total(c) === best ? 'best' : ''}" title="${esc(c.title)} · ${stockText(c)}">${money(total(c))}</td>`).join('');
+    return `<tr data-id="${p.id}"><td>${esc(p.name)}</td>${td}<td class="num">${live.length}/${cells.filter(Boolean).length}</td></tr>`;
+  }).join('');
+  const t = document.getElementById('matrix');
+  t.innerHTML = head + `<tbody>${rows}</tbody>`;
+  t.querySelectorAll('tbody tr').forEach(tr => tr.onclick = () => { select(tr.dataset.id); document.getElementById('detail-title').scrollIntoView({ behavior: 'smooth' }); });
+}
+
+function select(id) {
+  if (!data.present.some(p => p.id === id)) id = data.present[0]?.id;
+  state.product = id;
+  history.replaceState(null, '', '#' + id);
+  document.getElementById('product').value = id;
+  document.querySelectorAll('#matrix tbody tr').forEach(tr => tr.classList.toggle('sel', tr.dataset.id === id));
+  document.getElementById('detail-title').textContent = 'Price history: ' + data.products.find(p => p.id === id).name;
+  renderChart(); renderListings();
+}
+
+// Replay change-only history to get each shop's cheapest price at every change point.
+function seriesFor(productId) {
+  const urls = new Map(data.listings.filter(l => l.product === productId).map(l => [l.url, l]));
+  const events = hist.filter(h => urls.has(h.url));
+  const now = Date.now();
+  return data.shops.map(shop => {
+    const cur = new Map(); const pts = [];
+    for (const e of events.filter(e => e.shop === shop.id)) {
+      cur.set(e.url, e);
+      const c = cheapest([...cur.values()]);
+      const pt = { x: Date.parse(e.t), y: total(c), inStock: c.inStock, title: urls.get(c.url).title };
+      if (pts.length && pts.at(-1).x === pt.x) pts[pts.length - 1] = pt; else pts.push(pt);
+    }
+    if (pts.length) pts.push({ ...pts.at(-1), x: Math.max(now, pts.at(-1).x), extension: true }); // carry to today
+    return { shop, pts };
+  }).filter(s => s.pts.length);
+}
+
+function renderChart() {
+  const series = seriesFor(state.product);
+  const ink2 = css('--ink-2'), grid = css('--grid'), muted = css('--muted'), surface = css('--surface'), ink = css('--ink');
+  chart?.destroy();
+  chart = new Chart(document.getElementById('chart'), {
+    type: 'line',
+    data: { datasets: series.map(({ shop, pts }) => ({
+      label: shop.name, data: pts, borderColor: shop.color, backgroundColor: shop.color,
+      borderWidth: 2, stepped: 'before', pointRadius: pts.map(p => p.extension ? 0 : 4), pointHoverRadius: 6,
+      pointBorderColor: surface, pointBorderWidth: 2,
+      segment: { borderDash: c => c.p0.raw.inStock ? undefined : [5, 4] },
+    })) },
+    options: {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      interaction: { mode: 'nearest', axis: 'x', intersect: false },
+      scales: {
+        x: { type: 'linear', grid: { color: grid }, border: { color: css('--axis') },
+             ticks: { color: muted, maxTicksLimit: 8, callback(v) {
+               const short = this.max - this.min < 3 * 864e5; // under 3 days: show the time too
+               return short ? fmtDate(v) : new Date(v).toLocaleDateString('en-SG', { day: 'numeric', month: 'short' });
+             } } },
+        y: { grid: { color: grid }, border: { display: false }, ticks: { color: muted, callback: v => 'S$' + v } },
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: surface, titleColor: ink, bodyColor: ink2, borderColor: grid, borderWidth: 1, padding: 10,
+          filter: i => !i.raw.extension || i.dataIndex === i.dataset.data.length - 1,
+          callbacks: {
+            title: items => fmtDate(items[0].parsed.x),
+            label: i => ` ${i.dataset.label}: ${money(i.raw.y)}${i.raw.inStock ? '' : ' (out of stock)'}`,
+          },
+        },
+      },
+    },
+  });
+  document.getElementById('legend').innerHTML = series.map(({ shop }) =>
+    `<span><span class="swatch" style="background:${shop.color}"></span>${esc(shop.name)}</span>`).join('');
+}
+
+function renderListings() {
+  const onlyIn = document.getElementById('instock').checked;
+  const rows = data.listings.filter(l => l.product === state.product && (!onlyIn || l.inStock)).sort((a, b) => b.inStock - a.inStock || total(a) - total(b));
+  document.getElementById('listings').innerHTML = `<thead><tr><th>Shop</th><th>Listing</th><th class="num">Price</th><th>Stock</th><th>Last change</th></tr></thead><tbody>` +
+    rows.map(l => {
+      const s = data.shopById[l.shop];
+      const last = hist.filter(h => h.url === l.url).at(-1);
+      const fee = shipFee(l.shop, l.price);
+      return `<tr><td><span class="swatch" style="display:inline-block;background:${s.color}"></span> ${esc(s.name)}</td>
+        <td><a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.title)}</a></td>
+        <td class="num ${l.inStock ? '' : 'oos'}">${money(total(l))}${fee ? ` <span class="dim">(${money(l.price)} + ${money(fee)} ship)</span>` : ''}</td>
+        <td><span class="tag ${l.inStock ? 'ok' : 'err'}">${l.inStock ? '●' : '○'} ${stockText(l)}</span></td>
+        <td class="dim">${last ? fmtDate(last.t) : ''}</td></tr>`;
+    }).join('') + '</tbody>';
+}
+</script>
+</body>
+</html>

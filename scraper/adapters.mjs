@@ -1,0 +1,126 @@
+// One function per shop "type" in config.json. Each returns [{ title, price, inStock, stock, url }].
+// New site that fits neither? Add a function here and use its name as the shop's "type".
+
+const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function getJson(url, tries = 4) {
+  for (let i = 0; ; i++) {
+    const r = await fetch(url, { headers: { 'user-agent': UA, accept: 'application/json' } });
+    if (r.ok) return r.json();
+    // Shopify answers 429 when hit too often; back off 5s, 10s, 20s...
+    if ((r.status !== 429 && r.status < 500) || i >= tries) throw new Error(`HTTP ${r.status} ${url}`);
+    await sleep(5000 * 2 ** i);
+  }
+}
+
+// Shopify stores: "url" is a collection page; its /products.json lists every product with variants.
+async function shopify(shop) {
+  const { origin } = new URL(shop.url);
+  const items = [];
+  for (let page = 1; ; page++) {
+    const { products } = await getJson(`${shop.url}/products.json?limit=250&page=${page}`);
+    for (const p of products) for (const v of p.variants) items.push({
+      title: v.title === 'Default Title' ? p.title : `${p.title} - ${v.title}`,
+      price: Number(v.price),
+      inStock: v.available,
+      stock: null, // the public endpoint doesn't expose quantities
+      url: `${origin}/products/${p.handle}${p.variants.length > 1 ? `?variant=${v.id}` : ''}`,
+    });
+    if (products.length < 250) return items;
+  }
+}
+
+// WooCommerce stores: "url" is the site root, "search" the query. Uses the public Store API.
+// ponytail: variable products report their lowest price only; fetch variations if a shop uses them.
+async function woocommerce(shop) {
+  const items = [];
+  for (let page = 1; ; page++) {
+    const products = await getJson(`${shop.url}/wp-json/wc/store/products?search=${encodeURIComponent(shop.search)}&per_page=100&page=${page}`);
+    for (const p of products) items.push({
+      title: decodeEntities(p.name),
+      price: Number(p.prices.price) / 10 ** p.prices.currency_minor_unit,
+      inStock: p.is_in_stock,
+      stock: p.low_stock_remaining ?? null,
+      url: p.permalink,
+    });
+    if (products.length < 100) return items;
+  }
+}
+
+const decodeEntities = s => s
+  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(n))
+  .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;|&apos;/g, "'");
+
+// Any rendered HTML listing page, driven by CSS selectors in config.json:
+//   item (one per product card), title, price, link, optional soldOut (present = out of stock),
+//   optional stock (element whose text holds a quantity, e.g. "Only 3 left").
+// ponytail: single page only; add a "pages" URL list to the config when a shop paginates.
+async function playwright(shop, browser) {
+  const page = await browser.newPage({ userAgent: UA });
+  try {
+    await page.goto(shop.url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+    await page.waitForSelector(shop.selectors.item, { timeout: 30_000 });
+    const raw = await page.$$eval(shop.selectors.item, (els, s) => els.map(el => {
+      const q = sel => sel && el.querySelector(sel);
+      return {
+        title: q(s.title)?.textContent.trim().replace(/\s+/g, ' '),
+        price: q(s.price)?.textContent,
+        url: q(s.link)?.href ?? el.closest('a')?.href,
+        soldOut: !!q(s.soldOut),
+        stock: q(s.stock)?.textContent ?? null,
+      };
+    }), shop.selectors);
+    const items = [];
+    for (const r of raw.filter(r => r.title && r.price)) {
+      // "S$ 7.00 - S$ 200.00" means variants (pack vs box): read each from the product page.
+      if (moneyCount(r.price) > 1) { items.push(...await jsonLdVariants(page, r.url)); continue; }
+      items.push({
+        title: r.title,
+        price: parseMoney(r.price),
+        inStock: !r.soldOut,
+        stock: r.stock ? Number(r.stock.match(/\d+/)?.[0]) || null : null,
+        url: r.url,
+      });
+    }
+    return items;
+  } finally {
+    await page.close();
+  }
+}
+
+// schema.org Product / ProductGroup JSON-LD: a standard most shop platforms emit for Google.
+async function jsonLdVariants(page, url) {
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+  const blocks = await page.$$eval('script[type="application/ld+json"]', s => s.map(x => x.textContent));
+  const nodes = blocks.flatMap(b => { try { return [JSON.parse(b)].flat(); } catch { return []; } });
+  const group = nodes.find(n => n['@type'] === 'ProductGroup' || n['@type'] === 'Product');
+  if (!group) throw new Error(`no product JSON-LD at ${url}`);
+  return (group.hasVariant ?? [group]).map(v => {
+    const offer = [v.offers].flat()[0];
+    return {
+      title: v.name,
+      price: Number(offer.price),
+      inStock: /InStock|PreOrder|LimitedAvailability|OnlineOnly/.test(offer.availability ?? ''),
+      stock: null,
+      url: offer.url ?? url,
+    };
+  });
+}
+
+const moneyCount = s => s.match(/\d[\d,]*(\.\d+)?/g)?.length ?? 0;
+
+export const parseMoney = s => Number(s.replace(/,/g, '').match(/\d+(\.\d+)?/)?.[0]);
+
+// EasyStore shops (cdn.store-assets.com) share one theme, so they only need a "url" in config.json.
+const EASYSTORE = {
+  item: '.product-card-wrapper',
+  title: '.card-information__text',
+  price: '.price-item--sale', // whole element, so a "S$ 7 - S$ 200" range is detected
+  link: 'a',
+  soldOut: "[data-product-available='0']",
+  stock: '.low-inventory-notice',
+};
+const easystore = (shop, browser) => playwright({ ...shop, selectors: { ...EASYSTORE, ...shop.selectors } }, browser);
+
+export const adapters = { shopify, woocommerce, playwright, easystore };

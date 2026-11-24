@@ -1,0 +1,1233 @@
+{
+ "updated": "2026-11-24T05:49:15.482Z",
+ "products": [
+  {
+   "id": "combo",
+   "name": "Combo (multiple products)"
+  },
+  {
+   "id": "collector-commander-set",
+   "name": "Collector's Edition Commander (set of 4)"
+  },
+  {
+   "id": "collector-commander",
+   "name": "Collector's Edition Commander Deck"
+  },
+  {
+   "id": "commander-set",
+   "name": "Commander Decks (set of 4)"
+  },
+  {
+   "id": "commander",
+   "name": "Commander Deck"
+  },
+  {
+   "id": "draft-night",
+   "name": "Draft Night"
+  },
+  {
+   "id": "beam-me-up",
+   "name": "Beam Me Up Bundle"
+  },
+  {
+   "id": "scene-box-set",
+   "name": "Scene Boxes (set of 2)"
+  },
+  {
+   "id": "scene-box",
+   "name": "Scene Box"
+  },
+  {
+   "id": "beginner-box",
+   "name": "Beginner Box"
+  },
+  {
+   "id": "prerelease",
+   "name": "Prerelease Pack"
+  },
+  {
+   "id": "play-case",
+   "name": "Play Booster Case (6 boxes)"
+  },
+  {
+   "id": "collector-case",
+   "name": "Collector Booster Case"
+  },
+  {
+   "id": "collector-pack",
+   "name": "Collector Booster Pack"
+  },
+  {
+   "id": "play-pack",
+   "name": "Play Booster Pack"
+  },
+  {
+   "id": "collector-box",
+   "name": "Collector Booster Box"
+  },
+  {
+   "id": "play-box",
+   "name": "Play Booster Box"
+  },
+  {
+   "id": "bundle",
+   "name": "Bundle"
+  }
+ ],
+ "shops": [
+  {
+   "id": "greyogre",
+   "name": "Grey Ogre Games",
+   "url": "https://greyogregames.com/collections/star-trek-sealed-products",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "id": "onemtg",
+   "name": "OneMTG",
+   "url": "https://onemtg.com.sg/collections/star-trek-sealed",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "id": "hideout",
+   "name": "Hideout",
+   "url": "https://hideoutcg.com/collections/star-trek",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "id": "5mana",
+   "name": "5-Mana",
+   "url": "https://5-mana.sg/collections/star-trek-sealed-products",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "id": "wargames",
+   "name": "Wargames Shop",
+   "url": "https://wargamesshop.net",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "id": "mgw",
+   "name": "MGW Games",
+   "url": "https://mgwgames.com/collections/star-trek",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "id": "cardboard",
+   "name": "Cardboard Collective",
+   "url": "https://cardboard.sg/collections/star-trek",
+   "shipping": null,
+   "ok": true,
+   "error": null,
+   "lastOk": "2026-11-24T05:49:15.482Z"
+  }
+ ],
+ "listings": [
+  {
+   "title": "Star Trek TRK Collector Booster Box",
+   "price": 660,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-play-collector-box",
+   "product": "collector-box",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Collector's Editions - Set of 4",
+   "price": 950,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck-copy?variant=43052541870160",
+   "product": "collector-commander-set",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Collector's Editions - Federation Fleet",
+   "price": 260,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck-copy?variant=43111200555088",
+   "product": "collector-commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Collector's Editions - Klingon Fury",
+   "price": 260,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck-copy?variant=43111200587856",
+   "product": "collector-commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Collector's Editions - Landing Party",
+   "price": 260,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck-copy?variant=43111200620624",
+   "product": "collector-commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Collector's Editions - We Are the Borg",
+   "price": 340,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck-copy?variant=43111200653392",
+   "product": "collector-commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Play Booster Box",
+   "price": 240,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-play-booster-box",
+   "product": "play-box",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Draft Night",
+   "price": 160,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-draft-night",
+   "product": "draft-night",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Set of 4",
+   "price": 390,
+   "inStock": false,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck?variant=43052541509712",
+   "product": "commander-set",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Federation Fleet",
+   "price": 95,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck?variant=43111192952912",
+   "product": "commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Klingon Fury",
+   "price": 95,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck?variant=43111192985680",
+   "product": "commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - Landing Party",
+   "price": 120,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck?variant=43111193018448",
+   "product": "commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Commander Deck - We Are the Borg",
+   "price": 115,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-commander-deck?variant=43111193051216",
+   "product": "commander",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Bundle",
+   "price": 85,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-bundle",
+   "product": "bundle",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Scene Boxes - Set of 2",
+   "price": 120,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-scene-boxes?variant=43052545671248",
+   "product": "scene-box-set",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Scene Boxes - Divergent Timeline",
+   "price": 60,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-scene-boxes?variant=43111217299536",
+   "product": "scene-box",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Scene Boxes - Enterprise-Q",
+   "price": 60,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-scene-boxes?variant=43111217332304",
+   "product": "scene-box",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Collector Booster Pack",
+   "price": 55,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-play-collector-pack",
+   "product": "collector-pack",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Prerelease Kit",
+   "price": 50,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-prerelease-kit",
+   "product": "prerelease",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek TRK Play Booster Pack",
+   "price": 8,
+   "inStock": true,
+   "stock": null,
+   "url": "https://greyogregames.com/products/star-trek-trk-play-booster-pack",
+   "product": "play-pack",
+   "shop": "greyogre",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Collector Booster Box",
+   "price": 600,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-collector-booster-box",
+   "product": "collector-box",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Collector's Edition Commander Decks - Set of 4",
+   "price": 1120,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-collectors-edition-commander-decks?variant=67689738403992",
+   "product": "collector-commander-set",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Collector's Edition Commander Decks - Federation Fleet",
+   "price": 260,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-collectors-edition-commander-decks?variant=67689738436760",
+   "product": "collector-commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Collector's Edition Commander Decks - Landing Party",
+   "price": 260,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-collectors-edition-commander-decks?variant=67689738469528",
+   "product": "collector-commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Collector's Edition Commander Decks - Klingon Fury",
+   "price": 260,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-collectors-edition-commander-decks?variant=67689738502296",
+   "product": "collector-commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Collector's Edition Commander Decks - We Are the Borg",
+   "price": 340,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-collectors-edition-commander-decks?variant=67689738535064",
+   "product": "collector-commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Play Booster Box",
+   "price": 220,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-play-booster-box",
+   "product": "play-box",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Draft Night",
+   "price": 150,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-draft-night",
+   "product": "draft-night",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Scene Box (Set of 2)",
+   "price": 100,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-scene-box-set-of-2",
+   "product": "scene-box-set",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Commander Decks - Set of 4",
+   "price": 395,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-commander-decks?variant=67689728704664",
+   "product": "commander-set",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Commander Decks - Federation Fleet",
+   "price": 85,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-commander-decks?variant=67689728737432",
+   "product": "commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Commander Decks - Landing Party",
+   "price": 135,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-commander-decks?variant=67689728770200",
+   "product": "commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Commander Decks - Klingon Fury",
+   "price": 85,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-commander-decks?variant=67689728802968",
+   "product": "commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRC] Star Trek Commander Decks - We Are the Borg",
+   "price": 105,
+   "inStock": false,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trc-star-trek-commander-decks?variant=67689728835736",
+   "product": "commander",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Bundle",
+   "price": 80,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-bundle",
+   "product": "bundle",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Collector Booster Pack",
+   "price": 50,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-collector-booster-pack",
+   "product": "collector-pack",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Prerelease Kit",
+   "price": 50,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-prerelease-kit",
+   "product": "prerelease",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "[TRK] Star Trek Play Booster Pack",
+   "price": 8,
+   "inStock": true,
+   "stock": null,
+   "url": "https://onemtg.com.sg/products/trk-star-trek-play-booster-pack",
+   "product": "play-pack",
+   "shop": "onemtg",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Beam Me Up Bundle - New",
+   "price": 140,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-beam-me-up-bundle",
+   "product": "beam-me-up",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Bundle - New",
+   "price": 78,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-bundle",
+   "product": "bundle",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector Booster Display - New",
+   "price": 580,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-collector-booster-display",
+   "product": "collector-box",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Draft Night - New",
+   "price": 140,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-draft-night",
+   "product": "draft-night",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Display - New",
+   "price": 200,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-play-booster-display",
+   "product": "play-box",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek Commander Deck - Federation Fleet - New",
+   "price": 90,
+   "inStock": false,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-commander-deck-federation-fleet",
+   "product": "commander",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek Commander Deck - Klingon Fury - New",
+   "price": 90,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-commander-deck-klingon-fury",
+   "product": "commander",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek Commander Deck - Landing Party - New",
+   "price": 90,
+   "inStock": false,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-commander-deck-landing-party",
+   "product": "commander",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek Commander Deck - We Are the Borg - New",
+   "price": 90,
+   "inStock": false,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-commander-deck-we-are-the-borg",
+   "product": "commander",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek Scene Box - Divergent Timelines - New",
+   "price": 50,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-scene-box-divergent-timelines",
+   "product": "scene-box",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek Scene Box - Enterprise-Q - New",
+   "price": 50,
+   "inStock": true,
+   "stock": null,
+   "url": "https://hideoutcg.com/products/star-trek-scene-box-enterprise-q",
+   "product": "scene-box",
+   "shop": "hideout",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector Booster Pack",
+   "price": 50,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-collector-booster-pack",
+   "product": "collector-pack",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Pack",
+   "price": 8,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-play-booster-pack",
+   "product": "play-pack",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - \"Beam Me Up\" Bundle",
+   "price": 135,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-beam-me-up-bundle",
+   "product": "beam-me-up",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Bundle",
+   "price": 85,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-bundle",
+   "product": "bundle",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector Booster Box",
+   "price": 580,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-collector-booster-box",
+   "product": "collector-box",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Draft Night Box",
+   "price": 150,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-draft-night-box",
+   "product": "draft-night",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box",
+   "price": 220,
+   "inStock": true,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-play-booster-box",
+   "product": "play-box",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Scene Box Set of 2",
+   "price": 100,
+   "inStock": false,
+   "stock": null,
+   "url": "https://5-mana.sg/products/star-trek-scene-box-set-of-2",
+   "product": "scene-box-set",
+   "shop": "5mana",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "MTG: STAR TREK – Collector Booster Box (A4389601)",
+   "price": 550,
+   "inStock": true,
+   "stock": 1,
+   "url": "https://wargamesshop.net/product/mtg-star-trek-collector-booster-box-a4389601/",
+   "product": "collector-box",
+   "shop": "wargames",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "MTG: STAR TREK – Bundle (A583406)",
+   "price": 70,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://wargamesshop.net/product/mtg-star-trek-bundle-a583406/",
+   "product": "bundle",
+   "shop": "wargames",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "MTG: STAR TREK – Play Booster Box (A016802)",
+   "price": 190,
+   "inStock": false,
+   "stock": 0,
+   "url": "https://wargamesshop.net/product/mtg-star-trek-play-booster-box-a016802/",
+   "product": "play-box",
+   "shop": "wargames",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "MTG: STAR TREK – Prerelease Pack (A335618)",
+   "price": 44,
+   "inStock": true,
+   "stock": null,
+   "url": "https://wargamesshop.net/product/mtg-star-trek-prerelease-pack-a335618/",
+   "product": "prerelease",
+   "shop": "wargames",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Collector Commander Deck Set of 4 Brand New Factory Sealed",
+   "price": 620,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/-pre-order-magic-the-gathering-mtg-star-trek-english-collector-commander-deck-set-of-4-brand-new-factory-sealed",
+   "product": "collector-commander-set",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Commander Deck Set of 4 Brand New Factory Sealed",
+   "price": 265,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/-pre-order-magic-the-gathering-mtg-star-trek-english-commander-deck-set-of-4-brand-new-factory-sealed",
+   "product": "commander-set",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Scene Box Set of 2 Brand New Factory Sealed",
+   "price": 87.2,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/-pre-order-magic-the-gathering-mtg-star-trek-english-scene-box-set-of-2-brand-new-factory-sealed",
+   "product": "scene-box-set",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Pre order) Magic The Gathering MTG Star Trek English Draft Night Box Brand New Factory Sealed",
+   "price": 135,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/-pre-order-magic-the-gathering-mtg-star-trek-english-draft-night-box-brand-new-factory-sealed",
+   "product": "draft-night",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Pre order) Magic The Gathering MTG Star Trek English Beam Me Up Bundle Box Brand New Factory Sealed",
+   "price": 130,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/magic-the-gathering-mtg-star-trek-english-beam-me-up-bundle-box-brand-new-factory-sealed",
+   "product": "beam-me-up",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Bundle Box Brand New Factory Sealed",
+   "price": 72,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/magic-the-gathering-mtg-star-trek-english-bundle-box-brand-new-factory-sealed",
+   "product": "bundle",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Collector Booster Box Brand New Factory Sealed",
+   "price": 540,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/magic-the-gathering-mtg-star-trek-english-collector-booster-box-brand-new-factory-sealed",
+   "product": "collector-box",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "(Ready Stocks) Magic The Gathering MTG Star Trek English Play Booster Box Brand New Factory Sealed",
+   "price": 195,
+   "inStock": true,
+   "stock": null,
+   "url": "https://mgwgames.com/collections/star-trek/products/magic-the-gathering-mtg-star-trek-english-play-booster-box-brand-new-factory-sealed",
+   "product": "play-box",
+   "shop": "mgw",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Booster Fleet Bundle | Collector Booster Box + 2 x Play Booster Boxes (EN)",
+   "price": 950,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/star-trek-booster-fleet-bundle",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box (EN) - Booster Box",
+   "price": 200,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-pbb-en?variant=80849371",
+   "product": "play-box",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box (EN) - Booster Pack",
+   "price": 7,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-pbb-en?variant=80849372",
+   "product": "play-pack",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector Booster Box + Collector’s Edition Commander Deck Combo (EN)",
+   "price": 800,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/cc-bdl-trk-cecmdcombo-en",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector Booster Box + Play Booster Box Combo (EN)",
+   "price": 800,
+   "inStock": true,
+   "stock": 1,
+   "url": "https://cardboard.sg/collections/star-trek/products/cc-bdl-trk-cbbandpbb-en",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - Federation Fleet",
+   "price": 268,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/cc-bdl-trk-cmdcombo-en?variant=80409761",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - Landing Party",
+   "price": 288,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/cc-bdl-trk-cmdcombo-en?variant=80409762",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - Klingon Fury",
+   "price": 268,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/cc-bdl-trk-cmdcombo-en?variant=80409763",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box + Commander Deck Combo (EN) - We Are the Borg",
+   "price": 268,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/cc-bdl-trk-cmdcombo-en?variant=80409764",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Box + Beam Me Up Bundle Combo (EN)",
+   "price": 328,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/cc-bdl-trk-beammeupandplay-en",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector Booster Box (EN)",
+   "price": 650,
+   "inStock": true,
+   "stock": 3,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-cbb-en",
+   "product": "collector-box",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Play Booster Case: 6 Boxes (EN)",
+   "price": 1150,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-pbb-en-case6",
+   "product": "play-case",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector's Edition Commander Decks (EN) - Set of 4",
+   "price": 720,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-ce-set?variant=79951062",
+   "product": "collector-commander-set",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector's Edition Commander Decks (EN) - Federation Fleet",
+   "price": 188,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-ce-set?variant=79951058",
+   "product": "collector-commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector's Edition Commander Decks (EN) - Landing Party",
+   "price": 188,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-ce-set?variant=79951059",
+   "product": "collector-commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector's Edition Commander Decks (EN) - Klingon Fury",
+   "price": 188,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-ce-set?variant=79951060",
+   "product": "collector-commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Collector's Edition Commander Decks (EN) - We Are the Borg",
+   "price": 188,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-ce-set?variant=79951061",
+   "product": "collector-commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Commander Decks (EN) - Set of 4",
+   "price": 340,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-set?variant=79951057",
+   "product": "commander-set",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Commander Decks (EN) - Federation Fleet",
+   "price": 108,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-set?variant=79951053",
+   "product": "commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Commander Decks (EN) - Landing Party",
+   "price": 108,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-set?variant=79951054",
+   "product": "commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Commander Decks (EN) - Klingon Fury",
+   "price": 108,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-set?variant=79951055",
+   "product": "commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Commander Decks (EN) - We Are the Borg",
+   "price": 108,
+   "inStock": false,
+   "stock": null,
+   "url": "https://cardboard.sg/products/mtg-trk-cmd-en-set?variant=79951056",
+   "product": "commander",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Beam Me Up Bundle (EN)",
+   "price": 138,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-bmb-en",
+   "product": "beam-me-up",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Prerelease Kit (EN)",
+   "price": 45,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-prk-en",
+   "product": "prerelease",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Scene Boxes: Set of 2 (EN)",
+   "price": 98,
+   "inStock": true,
+   "stock": 2,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-scn-en-set2",
+   "product": "scene-box-set",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - All Hands Bundle (EN)",
+   "price": 950,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/collections/star-trek/products/cc-bdl-trk-allhands-en",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Mission 01: The Best of Both Worlds Bundle | Collector Booster Box + 2 x Play Booster Boxes",
+   "price": 950,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/collections/star-trek/products/cc-bdl-trk-bestofbothworlds-en",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Mission 02: The First Frontier Bundle | Collector Booster Box + Play Booster Box + 4 x Prerelease Kits",
+   "price": 950,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/collections/star-trek/products/cc-bdl-trk-firstfrontier-en",
+   "product": "combo",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Draft Night Kit (EN)",
+   "price": 138,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-dnk-en",
+   "product": "draft-night",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  },
+  {
+   "title": "Star Trek - Bundle (EN)",
+   "price": 79,
+   "inStock": true,
+   "stock": null,
+   "url": "https://cardboard.sg/collections/star-trek/products/mtg-trk-bdl-en",
+   "product": "bundle",
+   "shop": "cardboard",
+   "firstSeen": "2026-11-24T05:49:15.482Z",
+   "lastSeen": "2026-11-24T05:49:15.482Z"
+  }
+ ]
+}

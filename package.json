@@ -1,0 +1,12 @@
+{
+  "name": "mtg-star-trek-monitor",
+  "private": true,
+  "description": "Tracks Singapore shop prices and stock for MTG Star Trek sealed products",
+  "scripts": {
+    "scrape": "node scraper/scrape.mjs",
+    "test": "node scraper/test.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}
