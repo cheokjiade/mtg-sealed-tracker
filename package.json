@@ -4,7 +4,8 @@
   "description": "Tracks Singapore shop prices and stock for MTG Star Trek sealed products",
   "scripts": {
     "scrape": "node scraper/scrape.mjs",
-    "test": "node scraper/test.mjs"
+    "test": "node scraper/test.mjs",
+    "probe": "node scraper/probe.mjs"
   },
   "dependencies": {
     "playwright": "^1.65.1"

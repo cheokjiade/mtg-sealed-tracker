@@ -2,6 +2,8 @@
 
 Tracks prices and stock of Magic: The Gathering sealed products across Singapore shops, one set at a time
 (it starts with **Star Trek**).
+
+**Dashboard: https://cheokjiade.github.io/mtg-sealed-tracker/**
 A GitHub Action scrapes every 6 hours and commits JSON to `docs/data/`. GitHub Pages serves the dashboard from `docs/`.
 
 ## Layout
@@ -13,6 +15,8 @@ A GitHub Action scrapes every 6 hours and commits JSON to `docs/data/`. GitHub P
 | `scraper/core.mjs` | Title → product classification, and merging each run into stored data |
 | `scraper/scrape.mjs` | Runs every shop × set and writes `docs/data/latest.json` and `history.json` |
 | `scraper/test.mjs` | `npm test` |
+| `scraper/probe.mjs` | `npm run probe -- <url>`: identifies a site's platform and the adapter type to use |
+| `AGENTS.md`, `CLAUDE.md`, `.claude/skills/` | Rules and playbooks for the AI agents that maintain this repo |
 | `docs/index.html` | Dashboard (static, Chart.js) |
 | `.github/workflows/scrape.yml` | Scheduled scrape that commits the data |
 
