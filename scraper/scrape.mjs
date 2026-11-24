@@ -30,7 +30,9 @@ for (const { set, shop } of jobs) {
     if (['playwright', 'easystore'].includes(shop.type)) browser ??= await chromium.launch();
     const raw = await adapters[shop.type](shop, browser);
     r.listings = [];
+    const exclude = shop.exclude && new RegExp(shop.exclude, 'i'); // e.g. other languages, multi-pack lots
     for (const item of raw) {
+      if (exclude?.test(item.title)) { console.log(`  skip (excluded): ${item.title}`); continue; }
       const product = classify(item.title, set, config.products);
       if (product) r.listings.push({ ...item, product });
       else console.log(`  skip (no product match): ${item.title}`);
@@ -55,12 +57,12 @@ const out = {
   updated: now,
   sets: config.sets.map(({ id, name }) => ({ id, name })),
   products: config.products.map(({ id, name }) => ({ id, name })),
-  shops: config.shops.map(({ id, name, url, shipping = null }) => {
+  shops: config.shops.map(({ id, name, url, shipping = null, benchmark = false }) => {
     const prev = prevStatus[id] ?? {};
     const mine = results.filter(r => r.shop === id && (r.ok || r.ran));
-    if (!mine.length) return { ...prev, id, name, url, shipping }; // not run this time
+    if (!mine.length) return { ...prev, id, name, url, shipping, benchmark }; // not run this time
     const errors = mine.filter(r => !r.ok).map(r => `${r.set}: ${r.error}`);
-    return { id, name, url, shipping, ok: !errors.length, error: errors.join('; ') || null, lastOk: errors.length ? prev.lastOk ?? null : now };
+    return { id, name, url, shipping, benchmark, ok: !errors.length, error: errors.join('; ') || null, lastOk: errors.length ? prev.lastOk ?? null : now };
   }),
   listings: merged.listings,
 };

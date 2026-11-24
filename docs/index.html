@@ -29,7 +29,10 @@ h2 { font-size: 16px; margin: 0 0 12px; }
 .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 16px; margin-bottom: 20px; }
 .shops { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--ring); border-radius: 999px; color: var(--ink); text-decoration: none; font-size: 13px; }
-.swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.swatch.rectRot { border-radius: 1px; transform: rotate(45deg) scale(0.85); }
+.swatch.triangle { width: 0; height: 0; border-radius: 0; border: 6px solid transparent; border-bottom: 10px solid; border-top: 0; }
+th.bench, td.bench { color: var(--ink-2); font-style: italic; }
 .ok { color: var(--good); } .err { color: var(--bad); }
 .scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
@@ -37,6 +40,8 @@ th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--gri
 th { color: var(--ink-2); font-weight: 600; font-size: 12px; }
 td.num, th.num { text-align: right; }
 #listings td:nth-child(2) { white-space: normal; min-width: 240px; }
+#matrix th { white-space: normal; vertical-align: bottom; min-width: 64px; }
+#matrix th, #matrix td { padding: 7px 6px; }
 #matrix tbody tr { cursor: pointer; }
 #matrix tbody tr:hover, #matrix tbody tr.sel { background: var(--grid); }
 .best { font-weight: 700; }
@@ -74,7 +79,7 @@ td a { color: var(--ink); }
       <label title="Adds each shop's shipping fee (set in config.json) unless the item reaches its free-shipping threshold"><input type="checkbox" id="ship"> Include shipping</label>
     </div>
     <div class="scroll"><table id="matrix"></table></div>
-    <p class="note">★ = cheapest in-stock offer. <span class="oos">Struck-through</span> = out of stock. Click a row for history and listings.</p>
+    <p class="note">★ = cheapest in-stock offer among Singapore shops. <i>Italic</i> columns are benchmarks (Amazon.com prices converted to SGD by Amazon, excluding shipping and import charges) and are never starred. <span class="oos">Struck-through</span> = out of stock. Click a row for history and listings.</p>
   </section>
 
   <section class="card">
@@ -102,6 +107,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const safeUrl = u => /^https?:\/\//.test(u) ? u : '#';
 const money = n => 'S$' + n.toLocaleString('en-SG', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
 const fmtDate = t => new Date(t).toLocaleString('en-SG', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+const swatch = s => `<span class="swatch ${s.shape}" style="${s.shape === 'triangle' ? `border-bottom-color:${s.color}` : `background:${s.color}`}"></span>`;
 const stockText = l => !l.inStock ? 'Out of stock' : l.stock ? `Only ${l.stock} left` : 'In stock';
 
 let data, hist, chart;
@@ -118,7 +124,13 @@ const total = l => l.price + shipFee(l.shop, l.price);
 Promise.all([fetch('data/latest.json').then(r => r.json()), fetch('data/history.json').then(r => r.json())]).then(([d, h]) => {
   data = d; hist = h;
   // Color follows the shop (fixed by config order), never its rank.
-  data.shops.forEach((s, i) => s.color = css(`--s${(i % 8) + 1}`)); // ponytail: >8 shops reuse hues; fold extras into "Other" if that happens
+  // 8 palette hues; shops 9-16 reuse a hue with a diamond marker so no two shops look alike.
+  // Benchmarks (e.g. Amazon) are a neutral reference: gray with a triangle marker.
+  let n = 0;
+  data.shops.forEach(s => {
+    if (s.benchmark) { s.color = css('--muted'); s.shape = 'triangle'; return; }
+    s.color = css(`--s${(n % 8) + 1}`); s.shape = n < 8 ? 'circle' : 'rectRot'; n++;
+  });
   data.shopById = Object.fromEntries(data.shops.map(s => [s.id, s]));
   document.getElementById('updated').textContent =
     `${data.listings.length} listings across ${data.shops.length} shops · updated ${fmtDate(data.updated)}`;
@@ -154,7 +166,7 @@ function setSet(id, product = state.product) {
 function renderShops() {
   document.getElementById('shops').innerHTML = data.shops.map(s => `
     <a class="chip" href="${safeUrl(s.url)}" target="_blank" rel="noopener" title="${esc(s.error || 'Last OK ' + (s.lastOk ? fmtDate(s.lastOk) : 'never'))}">
-      <span class="swatch" style="background:${s.color}"></span>${esc(s.name)}
+      ${swatch(s)}${esc(s.name)}
       <span class="dim">${s.shipping ? `ship ${money(s.shipping.cost)}${s.shipping.freeFrom != null ? `, free ≥ ${money(s.shipping.freeFrom)}` : ''}` : 'ship ?'}</span>
       ${s.ok === false ? '<span class="err">⚠ failed</span>' : '<span class="ok">✓</span>'}
     </a>`).join('');
@@ -167,14 +179,15 @@ function cheapest(listings) {
 }
 
 function renderMatrix() {
-  const head = `<thead><tr><th>Product</th>${data.shops.map(s => `<th class="num"><span class="swatch" style="display:inline-block;background:${s.color}"></span> ${esc(s.name)}</th>`).join('')}<th class="num">In stock at</th></tr></thead>`;
+  const head = `<thead><tr><th>Product</th>${data.shops.map(s => `<th class="num ${s.benchmark ? 'bench' : ''}">${swatch(s)} ${esc(s.name)}</th>`).join('')}<th class="num">In stock at</th></tr></thead>`;
   const rows = data.present.map(p => {
     const cells = data.shops.map(s => cheapest(inSet.filter(l => l.product === p.id && l.shop === s.id)));
-    const live = cells.filter(c => c?.inStock);
+    const shopCells = cells.filter(c => c && !data.shopById[c.shop].benchmark); // benchmarks don't compete
+    const live = shopCells.filter(c => c.inStock);
     const best = live.length ? Math.min(...live.map(total)) : null;
-    const td = cells.map(c => !c ? '<td class="num dim">–</td>'
-      : `<td class="num ${!c.inStock ? 'oos' : total(c) === best ? 'best' : ''}" title="${esc(c.title)} · ${stockText(c)}">${money(total(c))}</td>`).join('');
-    return `<tr data-id="${p.id}"><td>${esc(p.name)}</td>${td}<td class="num">${live.length}/${cells.filter(Boolean).length}</td></tr>`;
+    const td = cells.map((c, i) => !c ? `<td class="num dim ${data.shops[i].benchmark ? 'bench' : ''}">–</td>`
+      : `<td class="num ${data.shops[i].benchmark ? 'bench' : ''} ${!c.inStock ? 'oos' : total(c) === best && !data.shops[i].benchmark ? 'best' : ''}" title="${esc(c.title)} · ${stockText(c)}">${money(total(c))}</td>`).join('');
+    return `<tr data-id="${p.id}"><td>${esc(p.name)}</td>${td}<td class="num">${live.length}/${shopCells.length}</td></tr>`;
   }).join('');
   const t = document.getElementById('matrix');
   t.innerHTML = head + `<tbody>${rows}</tbody>`;
@@ -218,7 +231,7 @@ function renderChart() {
     type: 'line',
     data: { datasets: series.map(({ shop, pts }) => ({
       label: shop.name, data: pts, borderColor: shop.color, backgroundColor: shop.color,
-      borderWidth: 2, stepped: 'before', pointRadius: pts.map(p => p.extension ? 0 : 4), pointHoverRadius: 6,
+      borderWidth: 2, stepped: 'before', pointStyle: shop.shape, pointRadius: pts.map(p => p.extension ? 0 : 5), pointHoverRadius: 7,
       pointBorderColor: surface, pointBorderWidth: 2,
       segment: { borderDash: c => c.p0.raw.inStock ? undefined : [5, 4] },
     })) },
@@ -247,7 +260,7 @@ function renderChart() {
     },
   });
   document.getElementById('legend').innerHTML = series.map(({ shop }) =>
-    `<span><span class="swatch" style="background:${shop.color}"></span>${esc(shop.name)}</span>`).join('');
+    `<span>${swatch(shop)}${esc(shop.name)}</span>`).join('');
 }
 
 function renderListings() {
@@ -258,7 +271,7 @@ function renderListings() {
       const s = data.shopById[l.shop];
       const last = hist.filter(h => h.url === l.url).at(-1);
       const fee = shipFee(l.shop, l.price);
-      return `<tr><td><span class="swatch" style="display:inline-block;background:${s.color}"></span> ${esc(s.name)}</td>
+      return `<tr><td class="${s.benchmark ? 'bench' : ''}">${swatch(s)} ${esc(s.name)}</td>
         <td><a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.title)}</a></td>
         <td class="num ${l.inStock ? '' : 'oos'}">${money(total(l))}${fee ? ` <span class="dim">(${money(l.price)} + ${money(fee)} ship)</span>` : ''}</td>
         <td><span class="tag ${l.inStock ? 'ok' : 'err'}">${l.inStock ? '●' : '○'} ${stockText(l)}</span></td>

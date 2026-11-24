@@ -1,9 +1,9 @@
 {
   "products": [
-    { "id": "combo", "name": "Combo (multiple products)", "match": "\\s\\+\\s|all hands bundle" },
-    { "id": "collector-commander-set", "name": "Collector's Edition Commander (set of 4)", "match": "(?=.*collector)(?=.*commander).*(set of 4|all 4|4 decks|complete set)" },
+    { "id": "combo", "name": "Combo (multiple products)", "match": "\\s\\+\\s|all hands bundle|booster and \\w+ booster" },
+    { "id": "collector-commander-set", "name": "Collector's Edition Commander (set of 4)", "match": "(?=.*collector)(?=.*commander).*(set of 4|all 4|4 decks|complete set|deck bundle)" },
     { "id": "collector-commander", "name": "Collector's Edition Commander Deck", "match": "(?=.*collector)(?=.*commander)" },
-    { "id": "commander-set", "name": "Commander Decks (set of 4)", "match": "commander.*(set of 4|all 4|4 decks|complete set)" },
+    { "id": "commander-set", "name": "Commander Decks (set of 4)", "match": "commander.*(set of 4|all 4|4 decks|complete set|deck bundle)" },
     { "id": "commander", "name": "Commander Deck", "match": "commander" },
     { "id": "draft-night", "name": "Draft Night", "match": "draft night" },
     { "id": "beam-me-up", "name": "Beam Me Up Bundle", "match": "beam me up" },
@@ -13,8 +13,8 @@
     { "id": "prerelease", "name": "Prerelease Pack", "match": "pre-?release" },
     { "id": "play-case", "name": "Play Booster Case (6 boxes)", "match": "play booster case" },
     { "id": "collector-case", "name": "Collector Booster Case", "match": "collector booster case" },
-    { "id": "collector-pack", "name": "Collector Booster Pack", "match": "collector.* - (booster )?pack( \\(.*\\))?$|collector booster pack|collector booster$" },
-    { "id": "play-pack", "name": "Play Booster Pack", "match": "play booster.* - (booster )?pack( \\(.*\\))?$|play booster pack|play booster$" },
+    { "id": "collector-pack", "name": "Collector Booster Pack", "match": "collector.* - (booster )?pack( \\(.*\\))?$|collector'?s? booster( pack)?$" },
+    { "id": "play-pack", "name": "Play Booster Pack", "match": "play booster.* - (booster )?pack( \\(.*\\))?$|play booster( pack)?$" },
     { "id": "collector-box", "name": "Collector Booster Box", "match": "collector.*(box|display)" },
     { "id": "play-box", "name": "Play Booster Box", "match": "play.*(box|display)|booster (box|display)" },
     { "id": "bundle", "name": "Bundle", "match": "bundle" }
@@ -26,7 +26,31 @@
     { "id": "5mana", "name": "5-Mana", "type": "shopify", "url": "https://5-mana.sg" },
     { "id": "wargames", "name": "Wargames Shop", "type": "woocommerce", "url": "https://wargamesshop.net" },
     { "id": "mgw", "name": "MGW Games", "type": "easystore", "url": "https://mgwgames.com" },
-    { "id": "cardboard", "name": "Cardboard Collective", "type": "easystore", "url": "https://cardboard.sg" }
+    { "id": "cardboard", "name": "Cardboard Collective", "type": "easystore", "url": "https://cardboard.sg" },
+    { "id": "flagship", "name": "Flagship Games", "type": "shopify", "url": "https://www.flagshipgames.sg" },
+    { "id": "arcane", "name": "Arcane Sanctum", "type": "shopify", "url": "https://arcanesanctumtcg.com" },
+    {
+      "id": "duellers", "name": "Dueller's Point", "type": "playwright", "url": "https://www.duellerspoint.com",
+      "selectors": {
+        "item": "tbody tr:has(a.fw-bold)",
+        "title": "a.fw-bold",
+        "price": ".text-primary.fw-bold",
+        "link": "a.fw-bold",
+        "inStock": ".btn-add-cart",
+        "stock": ".badge.bg-info"
+      }
+    },
+    {
+      "id": "amazon", "name": "Amazon.com (benchmark)", "type": "playwright", "url": "https://www.amazon.com", "benchmark": true,
+      "cookies": "i18n-prefs=SGD", "pricePrefix": "S$", "maxPages": 2,
+      "selectors": {
+        "item": "[data-component-type='s-search-result']",
+        "title": "h2",
+        "price": ".a-price .a-offscreen",
+        "link": "a.a-link-normal[href*='/dp/'], a.a-link-normal",
+        "next": "a.s-pagination-next"
+      }
+    }
   ],
   "sets": [
     {
@@ -38,7 +62,14 @@
         "5mana": { "url": "https://5-mana.sg/collections/star-trek-sealed-products" },
         "wargames": { "search": "star trek" },
         "mgw": { "url": "https://mgwgames.com/collections/star-trek" },
-        "cardboard": { "url": "https://cardboard.sg/collections/star-trek" }
+        "cardboard": { "url": "https://cardboard.sg/collections/star-trek" },
+        "flagship": { "url": "https://www.flagshipgames.sg/collections/preorder-star-trek-products", "exclude": "\\[|\\bNM\\b|\\bfoil\\b|token|art card" },
+        "arcane": { "url": "https://arcanesanctumtcg.com/collections/star-trek", "exclude": "\\[|\\bNM\\b|\\bfoil\\b|token|art card" },
+        "duellers": { "url": "https://www.duellerspoint.com/categories/star-trek" },
+        "amazon": {
+          "url": "https://www.amazon.com/s?k=magic+the+gathering+star+trek",
+          "exclude": "japanese|\\blot\\b|playmat|sleeves|deck box|binder|portfolio"
+        }
       }
     }
   ]

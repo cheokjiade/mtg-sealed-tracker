@@ -56,13 +56,24 @@ Add an entry to `shops` in `config.json` (its `url` is the homepage), then add i
   "shipping": { "cost": 8, "freeFrom": 150 } }
 ```
 
-`soldOut` (its presence means out of stock) and `stock` (text such as "Only 3 left") are optional.
+`soldOut` (its presence means out of stock), `inStock` (its presence means buyable, for sites that mark availability
+instead) and `stock` (text such as "Only 3 left") are optional. Further optional keys on the shop or set source:
+`cookies` (`"name=value; ..."`), `pricePrefix` (price text must contain it, e.g. `"S$"`), and `maxPages`.
+Any source can set `exclude`, a regex for titles to drop before classification (other languages, multi-pack lots, singles).
+If a page redirects to a captcha or login wall, the shop fails for that run and keeps its last good data. It is never worked around.
 Pages are followed through the next-page link (`rel="next"` or `aria-label="Next"` by default; set `selectors.next` if a
 site differs), up to 20 pages. Shopify and WooCommerce paginate through their APIs.
 When a card shows a price range, the scraper opens the product page and reads each variant from its schema.org JSON-LD.
 A site that fits none of these types gets a new function in `adapters.mjs`, named after its `type`.
 
 Test one shop with `npm run scrape -- myshop`.
+
+## Benchmarks
+
+A shop with `"benchmark": true` is shown for comparison but never gets the ★ or counts toward "in stock at".
+Amazon.com is the one benchmark: a single search page (two at most) per run, with the `i18n-prefs=SGD` cookie so
+Amazon converts prices to SGD itself. Those prices exclude shipping and import charges. If Amazon serves a captcha to the
+GitHub runner, the benchmark just keeps its last values.
 
 ## Shipping
 

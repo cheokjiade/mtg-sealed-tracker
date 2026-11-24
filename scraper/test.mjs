@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { classify, merge, shouldSave } from './core.mjs';
-import { parseMoney, CURRENCY } from './adapters.mjs';
+import { parseMoney, CURRENCY, canonicalUrl } from './adapters.mjs';
 
 const { products, sets, shops } = JSON.parse(readFileSync(new URL('../config.json', import.meta.url)));
 const trk = sets.find(s => s.id === 'trk');
@@ -28,6 +28,10 @@ assert.equal(c('Star Trek Bundle'), 'bundle');
 assert.equal(c('Star Trek TRK Scene Boxes'), 'scene-box');
 assert.equal(c('Star Trek Draft Night Box'), 'draft-night');
 assert.equal(c('Star Trek - Booster Fleet Bundle | Collector Booster Box + 2 x Play Booster Boxes (EN)'), 'combo');
+assert.equal(c("Magic: The Gathering® | Star Trek™ Play Booster And Collector Booster Bundle"), 'combo');
+assert.equal(c("Magic: The Gathering | Star Trek Collector's Booster"), 'collector-pack');
+assert.equal(c("Magic: The Gathering | Star Trek Collector's Edition Commander Deck Bundle"), 'collector-commander-set');
+assert.equal(c('Magic: The Gathering® | Star Trek™ Play Booster Box'), 'play-box');
 assert.equal(c('Captain Pike, Fullness of Time [Star Trek]'), null); // single card
 assert.equal(c('Bloomburrow Play Booster Box'), null); // other set
 
@@ -38,6 +42,11 @@ for (const s of sets) for (const shop of Object.keys(s.sources)) assert.ok(shops
 
 assert.equal(parseMoney('S$ 1,620.50'), 1620.5);
 assert.equal(CURRENCY, 'SGD');
+// Amazon links carry per-visit tracking; sponsored ones are redirects. Both must map to one stable URL.
+assert.equal(canonicalUrl('https://www.amazon.com/Magic-Gathering-Star-Trek/dp/B0H6H2VXJB/ref=sr_1_1?crid=X&sr=8-1'), 'https://www.amazon.com/dp/B0H6H2VXJB');
+assert.equal(canonicalUrl('https://www.amazon.com/sspa/click?ie=UTF8&url=%2FMagic%2Fdp%2FB0H6H2VXJB%2Fref%3Dsr_1_1_sspa'), 'https://www.amazon.com/dp/B0H6H2VXJB');
+assert.equal(canonicalUrl('https://www.amazon.sg/Magic/dp/B0H6H2VXJB?th=1'), 'https://www.amazon.com/dp/B0H6H2VXJB');
+assert.equal(canonicalUrl('https://cardboard.sg/products/x?variant=1'), 'https://cardboard.sg/products/x?variant=1');
 
 // merge: change-only history, failed shop keeps data, delisted -> out of stock, sets kept apart
 const L = (url, price, inStock) => ({ url, price, inStock, title: url, product: 'play-box' });

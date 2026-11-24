@@ -71,17 +71,28 @@ const decodeEntities = s => s
 // Any rendered HTML listing page, driven by CSS selectors in config.json:
 //   item (one per product card), title, price, link, optional soldOut (present = out of stock),
 //   optional stock (element whose text holds a quantity, e.g. "Only 3 left").
+//   optional inStock (present = buyable, for sites that mark availability rather than sold-out),
 //   optional next (the next-page link; default covers rel="next" and aria-label="Next").
+// Shop/source options: maxPages (default 20), cookies ("a=1; b=2"), pricePrefix (price text must contain it, e.g. "S$").
 const NEXT = 'a[rel="next"], link[rel="next"], a[aria-label="Next" i], a[aria-label="Next page" i]';
-const MAX_PAGES = 20;
+const BOT_WALL = /captcha|robot check|verify\/traffic|are you a human|access denied|login required/i;
 async function playwright(shop, browser) {
-  const page = await browser.newPage({ userAgent: UA });
+  const page = await browser.newPage({ userAgent: UA, locale: 'en-SG' });
+  const { hostname } = new URL(shop.url);
+  if (shop.cookies) await page.context().addCookies(shop.cookies.split(/;\s*/).map(c => {
+    const [name, ...v] = c.split('=');
+    return { name, value: v.join('='), domain: '.' + hostname.replace(/^www\./, ''), path: '/' };
+  }));
+  const maxPages = shop.maxPages ?? 20;
   try {
     const raw = [];
     const visited = new Set();
-    for (let url = shop.url; url && !visited.has(url) && visited.size < MAX_PAGES;) {
+    let url = shop.url;
+    while (url && !visited.has(url) && visited.size < maxPages) {
       visited.add(url);
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+      // Never try to get past bot protection: fail the shop so its last good data is kept.
+      if (BOT_WALL.test(page.url() + ' ' + await page.title())) throw new Error(`bot protection at ${page.url()}`);
       await page.waitForSelector(shop.selectors.item, { timeout: 30_000 });
       raw.push(...await page.$$eval(shop.selectors.item, (els, s) => els.map(el => {
         const q = sel => sel && el.querySelector(sel);
@@ -89,16 +100,18 @@ async function playwright(shop, browser) {
           title: q(s.title)?.textContent.trim().replace(/\s+/g, ' '),
           price: q(s.price)?.textContent,
           url: q(s.link)?.href ?? el.closest('a')?.href,
-          soldOut: !!q(s.soldOut),
+          soldOut: s.inStock ? !q(s.inStock) : !!q(s.soldOut),
           stock: q(s.stock)?.textContent ?? null,
         };
       }), shop.selectors));
       url = await page.$eval(shop.selectors.next ?? NEXT, a => a.href).catch(() => null);
     }
-    if (visited.size === MAX_PAGES) console.warn(`  ${shop.id}: stopped at ${MAX_PAGES} pages`);
+    if (url && visited.size === maxPages && !shop.maxPages) console.warn(`  ${shop.id}: stopped at ${maxPages} pages`);
     const items = [];
     for (const r of raw.filter(r => r.title && r.price)) {
+      r.url = canonicalUrl(r.url);
       if (FOREIGN_MONEY.test(r.price)) assertCurrency(r.price.match(FOREIGN_MONEY)[0]);
+      if (shop.pricePrefix && !r.price.includes(shop.pricePrefix)) throw new Error(`price "${r.price.trim()}" lacks ${shop.pricePrefix}; wrong currency?`);
       // "S$ 7.00 - S$ 200.00" means variants (pack vs box): read each from the product page.
       if (moneyCount(r.price) > 1) { items.push(...await jsonLdVariants(page, r.url)); continue; }
       items.push({
@@ -133,6 +146,14 @@ async function jsonLdVariants(page, url) {
       url: offer.url ?? url,
     };
   });
+}
+
+// Listings are keyed by URL, so strip per-visit tracking. Amazon (incl. sponsored redirect links, and the
+// amazon.sg links it serves to Singapore IPs) → amazon.com/dp/<ASIN>, so local and CI runs agree.
+export function canonicalUrl(u) {
+  const asin = /amazon\./.test(u) && decodeURIComponent(u).match(/\/dp\/([A-Z0-9]{10})/);
+  if (asin) return `https://www.amazon.com/dp/${asin[1]}`;
+  return u;
 }
 
 const moneyCount = s => s.match(/\d[\d,]*(\.\d+)?/g)?.length ?? 0;
