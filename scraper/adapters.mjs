@@ -75,7 +75,7 @@ const decodeEntities = s => s
 //   optional next (the next-page link; default covers rel="next" and aria-label="Next").
 // Shop/source options: maxPages (default 20), cookies ("a=1; b=2"), pricePrefix (price text must contain it, e.g. "S$").
 const NEXT = 'a[rel="next"], link[rel="next"], a[aria-label="Next" i], a[aria-label="Next page" i]';
-const BOT_WALL = /captcha|robot check|verify\/traffic|are you a human|access denied|login required/i;
+const BOT_WALL = /captcha|robot check|verify\/traffic|are you a human|access denied|login required|characters you see|not a robot|automated access/i;
 async function playwright(shop, browser) {
   const page = await browser.newPage({ userAgent: UA, locale: 'en-SG' });
   const { hostname } = new URL(shop.url);
@@ -92,7 +92,8 @@ async function playwright(shop, browser) {
       visited.add(url);
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
       // Never try to get past bot protection: fail the shop so its last good data is kept.
-      if (BOT_WALL.test(page.url() + ' ' + await page.title())) throw new Error(`bot protection at ${page.url()}`);
+      const head = page.url() + ' ' + await page.title() + ' ' + (await page.innerText('body').catch(() => '')).slice(0, 1500);
+      if (BOT_WALL.test(head)) throw new Error(`bot protection at ${page.url()}`);
       await page.waitForSelector(shop.selectors.item, { timeout: 30_000 });
       raw.push(...await page.$$eval(shop.selectors.item, (els, s) => els.map(el => {
         const q = sel => sel && el.querySelector(sel);
