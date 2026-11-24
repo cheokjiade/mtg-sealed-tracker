@@ -58,7 +58,7 @@ Add an entry to `shops` in `config.json` (its `url` is the homepage), then add i
 
 `soldOut` (its presence means out of stock), `inStock` (its presence means buyable, for sites that mark availability
 instead) and `stock` (text such as "Only 3 left") are optional. Further optional keys on the shop or set source:
-`cookies` (`"name=value; ..."`), `pricePrefix` (price text must contain it, e.g. `"S$"`), and `maxPages`.
+`cookies` (`"name=value; ..."`), `currency` (`"USD"` to accept US-dollar prices and convert them), and `maxPages`.
 Any source can set `exclude`, a regex for titles to drop before classification (other languages, multi-pack lots, singles).
 If a page redirects to a captcha or login wall, the shop fails for that run and keeps its last good data. It is never worked around.
 Pages are followed through the next-page link (`rel="next"` or `aria-label="Next"` by default; set `selectors.next` if a
@@ -71,9 +71,10 @@ Test one shop with `npm run scrape -- myshop`.
 ## Benchmarks
 
 A shop with `"benchmark": true` is shown for comparison but never gets the ★ or counts toward "in stock at".
-Amazon.com is the one benchmark: a single search page (two at most) per run, with the `i18n-prefs=SGD` cookie so
-Amazon converts prices to SGD itself. Those prices exclude shipping and import charges. If Amazon serves a captcha to the
-GitHub runner, the benchmark just keeps its last values.
+Amazon.com is the one benchmark: a single search page (two at most) per run. GitHub's US runners see USD prices,
+which are converted to SGD at the European Central Bank's daily rate ([Frankfurter](https://www.frankfurter.app/)). The
+original USD price is kept as `origPrice`. Prices exclude shipping and import charges. If Amazon serves a robot check to
+the runner, the benchmark just keeps its last values.
 
 ## Shipping
 

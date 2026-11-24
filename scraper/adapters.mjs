@@ -57,6 +57,15 @@ async function woocommerce(shop) {
   }
 }
 
+// A shop with "currency": "USD" (Amazon.com: US servers always see USD) has bare "$" prices converted at the
+// European Central Bank's daily rate. Every other shop is SGD-only and fails on a foreign price.
+let usdSgdRate;
+async function usdToSgd() {
+  usdSgdRate ??= (await getJson('https://api.frankfurter.app/latest?from=USD&to=SGD')).rates.SGD;
+  if (!(usdSgdRate > 0.5 && usdSgdRate < 3)) throw new Error(`implausible USD→SGD rate ${usdSgdRate}`);
+  return usdSgdRate;
+}
+
 const assertCurrency = code => {
   if (code && code !== CURRENCY) throw new Error(`prices served in ${code}, not ${CURRENCY}; refusing to record them`);
   return {};
@@ -73,7 +82,7 @@ const decodeEntities = s => s
 //   optional stock (element whose text holds a quantity, e.g. "Only 3 left").
 //   optional inStock (present = buyable, for sites that mark availability rather than sold-out),
 //   optional next (the next-page link; default covers rel="next" and aria-label="Next").
-// Shop/source options: maxPages (default 20), cookies ("a=1; b=2"), pricePrefix (price text must contain it, e.g. "S$").
+// Shop/source options: maxPages (default 20), cookies ("a=1; b=2"), currency ("USD" to accept and convert USD prices).
 const NEXT = 'a[rel="next"], link[rel="next"], a[aria-label="Next" i], a[aria-label="Next page" i]';
 const BOT_WALL = /captcha|robot check|verify\/traffic|are you a human|access denied|login required|characters you see|not a robot|automated access/i;
 async function playwright(shop, browser) {
@@ -113,13 +122,16 @@ async function playwright(shop, browser) {
     const items = [];
     for (const r of raw.filter(r => r.title && r.price)) {
       r.url = canonicalUrl(r.url);
-      if (FOREIGN_MONEY.test(r.price)) assertCurrency(r.price.match(FOREIGN_MONEY)[0]);
-      if (shop.pricePrefix && !r.price.includes(shop.pricePrefix)) throw new Error(`price "${r.price.trim()}" lacks ${shop.pricePrefix}; wrong currency?`);
+      const usd = shop.currency === 'USD' && !/S\$|SGD/.test(r.price);
+      const foreign = r.price.match(FOREIGN_MONEY)?.[0];
+      if (foreign && !(usd && /US/.test(foreign))) assertCurrency(foreign);
       // "S$ 7.00 - S$ 200.00" means variants (pack vs box): read each from the product page.
-      if (moneyCount(r.price) > 1) { items.push(...await jsonLdVariants(page, r.url)); continue; }
+      if (!usd && moneyCount(r.price) > 1) { items.push(...await jsonLdVariants(page, r.url)); continue; }
+      const amount = parseMoney(r.price);
       items.push({
         title: r.title,
-        price: parseMoney(r.price),
+        price: usd ? Math.round(amount * await usdToSgd() * 100) / 100 : amount,
+        ...(usd && { origPrice: amount, origCurrency: 'USD' }),
         inStock: !r.soldOut,
         stock: r.stock ? Number(r.stock.match(/\d+/)?.[0]) || null : null,
         url: r.url,

@@ -79,7 +79,7 @@ td a { color: var(--ink); }
       <label title="Adds each shop's shipping fee (set in config.json) unless the item reaches its free-shipping threshold"><input type="checkbox" id="ship"> Include shipping</label>
     </div>
     <div class="scroll"><table id="matrix"></table></div>
-    <p class="note">★ = cheapest in-stock offer among Singapore shops. <i>Italic</i> columns are benchmarks (Amazon.com prices converted to SGD by Amazon, excluding shipping and import charges) and are never starred. <span class="oos">Struck-through</span> = out of stock. Click a row for history and listings.</p>
+    <p class="note">★ = cheapest in-stock offer among Singapore shops. <i>Italic</i> columns are benchmarks (Amazon.com USD prices converted at the ECB daily rate, excluding shipping and import charges) and are never starred. <span class="oos">Struck-through</span> = out of stock. Click a row for history and listings.</p>
   </section>
 
   <section class="card">
@@ -273,7 +273,7 @@ function renderListings() {
       const fee = shipFee(l.shop, l.price);
       return `<tr><td class="${s.benchmark ? 'bench' : ''}">${swatch(s)} ${esc(s.name)}</td>
         <td><a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.title)}</a></td>
-        <td class="num ${l.inStock ? '' : 'oos'}">${money(total(l))}${fee ? ` <span class="dim">(${money(l.price)} + ${money(fee)} ship)</span>` : ''}</td>
+        <td class="num ${l.inStock ? '' : 'oos'}">${money(total(l))}${fee ? ` <span class="dim">(${money(l.price)} + ${money(fee)} ship)</span>` : ''}${l.origPrice ? ` <span class="dim">(US$${l.origPrice.toFixed(2)})</span>` : ''}</td>
         <td><span class="tag ${l.inStock ? 'ok' : 'err'}">${l.inStock ? '●' : '○'} ${stockText(l)}</span></td>
         <td class="dim">${last ? fmtDate(last.t) : ''}</td></tr>`;
     }).join('') + '</tbody>';

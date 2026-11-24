@@ -42,7 +42,7 @@
     },
     {
       "id": "amazon", "name": "Amazon.com (benchmark)", "type": "playwright", "url": "https://www.amazon.com", "benchmark": true,
-      "cookies": "i18n-prefs=SGD", "pricePrefix": "S$", "maxPages": 2,
+      "currency": "USD", "maxPages": 2,
       "selectors": {
         "item": "[data-component-type='s-search-result']",
         "title": "h2",
