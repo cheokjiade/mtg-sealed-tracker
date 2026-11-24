@@ -1,33 +1,52 @@
 # MTG sealed tracker (Singapore)
 
-Tracks prices and stock of **Magic: The Gathering | Star Trek** sealed products across Singapore shops.
+Tracks prices and stock of Magic: The Gathering sealed products across Singapore shops, one set at a time
+(it starts with **Star Trek**).
 A GitHub Action scrapes every 6 hours and commits JSON to `docs/data/`. GitHub Pages serves the dashboard from `docs/`.
 
 ## Layout
 
 | Path | What |
 |---|---|
-| `config.json` | Shops to scrape and product patterns. **This is the file you edit.** |
+| `config.json` | Shops, sets (and where each shop lists them), product patterns. **This is the file you edit.** |
 | `scraper/adapters.mjs` | One function per shop `type` |
 | `scraper/core.mjs` | Title → product classification, and merging each run into stored data |
-| `scraper/scrape.mjs` | Runs every shop and writes `docs/data/latest.json` and `history.json` |
+| `scraper/scrape.mjs` | Runs every shop × set and writes `docs/data/latest.json` and `history.json` |
 | `scraper/test.mjs` | `npm test` |
 | `docs/index.html` | Dashboard (static, Chart.js) |
 | `.github/workflows/scrape.yml` | Scheduled scrape that commits the data |
 
+## Adding a set
+
+Add an entry to `sets` in `config.json`. `match` is a regex a listing title must satisfy to belong to the set. `sources` says
+where each shop lists it, and is merged over that shop's entry in `shops`:
+
+```json
+{ "id": "eoe", "name": "Edge of Eternities", "match": "edge of eternities|\\bEOE\\b",
+  "sources": {
+    "greyogre": { "url": "https://greyogregames.com/collections/<that-set's-collection>" },
+    "wargames": { "search": "edge of eternities" }
+  } }
+```
+
+Product types (`products`) are shared by every set. The dashboard has a set picker, and links look like `#trk/play-box`.
+Run one set with `npm run scrape -- eoe`.
+
 ## Adding a shop
 
-Add an entry to `shops` in `config.json`. Pick the `type` that matches the site:
+Add an entry to `shops` in `config.json` (its `url` is the homepage), then add it to each set's `sources`. Pick the `type` that matches the site:
 
 | type | Site | Needs |
 |---|---|---|
+| type | Site | Set source needs |
+|---|---|---|
 | `shopify` | Shopify store (`cdn.shopify.com` in the page source) | `url` of a collection page |
-| `woocommerce` | WordPress + WooCommerce | `url` (site root) and `search` |
+| `woocommerce` | WordPress + WooCommerce | `search` (the shop `url` is the site root) |
 | `easystore` | EasyStore store (`cdn.store-assets.com`) | `url` of a collection page |
-| `playwright` | Anything else, rendered in headless Chromium | `url` and `selectors` (see below) |
+| `playwright` | Anything else, rendered in headless Chromium | `url` of a listing page, and `selectors` on the shop |
 
 ```json
-{ "id": "myshop", "name": "My Shop", "type": "playwright", "url": "https://example.sg/star-trek",
+{ "id": "myshop", "name": "My Shop", "type": "playwright", "url": "https://example.sg",
   "selectors": { "item": ".product", "title": ".name", "price": ".price", "link": "a",
                  "soldOut": ".sold-out", "stock": ".qty-left" },
   "shipping": { "cost": 8, "freeFrom": 150 } }
@@ -49,12 +68,12 @@ the field show `ship ?` and count as free.
 
 `products` in `config.json` maps listing titles to products with case-insensitive regexes. **The first match wins**,
 so specific entries (a set of 4 Commander decks) come before general ones (one Commander deck). Titles must also
-mention Star Trek / TRK / TRC. Unmatched titles are printed as `skip` in the scrape log. Add a pattern when a real
-product is being skipped. To track another set, change `STAR_TREK` in `core.mjs` and the patterns.
+match the set's `match`. Unmatched titles are printed as `skip` in the scrape log. Add a pattern when a real
+product is being skipped.
 
 ## Data
 
-- `docs/data/latest.json`: current listing per URL (price, inStock, stock, firstSeen, lastSeen) and shop status.
+- `docs/data/latest.json`: current listing per URL (set, product, price, inStock, stock, firstSeen, lastSeen) and shop status.
 - `docs/data/history.json`: one row only when a listing's price or stock state changes, so it stays small.
 
 If a shop's scrape fails, its last known listings are kept. A listing that disappears from a shop is marked out of stock.

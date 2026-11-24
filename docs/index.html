@@ -57,7 +57,10 @@ td a { color: var(--ink); }
 </head>
 <body>
 <main>
-  <h1>MTG × Star Trek: Singapore sealed prices</h1>
+  <div class="row">
+    <h1 id="heading">MTG sealed prices in Singapore</h1>
+    <label>Set <select id="set"></select></label>
+  </div>
   <p class="sub" id="updated">Loading…</p>
 
   <section class="card">
@@ -117,18 +120,36 @@ Promise.all([fetch('data/latest.json').then(r => r.json()), fetch('data/history.
   // Color follows the shop (fixed by config order), never its rank.
   data.shops.forEach((s, i) => s.color = css(`--s${(i % 8) + 1}`)); // ponytail: >8 shops reuse hues; fold extras into "Other" if that happens
   data.shopById = Object.fromEntries(data.shops.map(s => [s.id, s]));
-  data.present = data.products.filter(p => data.listings.some(l => l.product === p.id))
-    .sort((a, b) => (a.id === 'combo') - (b.id === 'combo')); // combo matches first in config but reads best last
   document.getElementById('updated').textContent =
     `${data.listings.length} listings across ${data.shops.length} shops · updated ${fmtDate(data.updated)}`;
-  renderShops(); renderMatrix();
+  renderShops();
+  const setSel = document.getElementById('set');
+  setSel.innerHTML = data.sets.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join('');
+  setSel.onchange = () => setSet(setSel.value);
   const sel = document.getElementById('product');
-  sel.innerHTML = data.present.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
   sel.onchange = () => select(sel.value);
   document.getElementById('instock').onchange = renderListings;
   document.getElementById('ship').onchange = e => { state.ship = e.target.checked; renderMatrix(); select(state.product); };
-  select(location.hash.slice(1) || 'collector-box');
+  const [set, product] = location.hash.slice(1).split('/'); // #trk/play-box
+  setSet(set, product || 'collector-box');
 });
+
+// Everything below the shop list is scoped to one set.
+let inSet = [];
+function setSet(id, product = state.product) {
+  if (!data.sets.some(s => s.id === id)) id = data.sets[0].id;
+  state.set = id;
+  inSet = data.listings.filter(l => l.set === id);
+  data.present = data.products.filter(p => inSet.some(l => l.product === p.id))
+    .sort((a, b) => (a.id === 'combo') - (b.id === 'combo')); // combo matches first in config but reads best last
+  const setName = data.sets.find(s => s.id === id).name;
+  document.getElementById('set').value = id;
+  document.getElementById('heading').textContent = `MTG × ${setName}: Singapore sealed prices`;
+  document.title = `MTG ${setName}: Singapore sealed price monitor`;
+  document.getElementById('product').innerHTML = data.present.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  renderMatrix();
+  select(product);
+}
 
 function renderShops() {
   document.getElementById('shops').innerHTML = data.shops.map(s => `
@@ -148,7 +169,7 @@ function cheapest(listings) {
 function renderMatrix() {
   const head = `<thead><tr><th>Product</th>${data.shops.map(s => `<th class="num"><span class="swatch" style="display:inline-block;background:${s.color}"></span> ${esc(s.name)}</th>`).join('')}<th class="num">In stock at</th></tr></thead>`;
   const rows = data.present.map(p => {
-    const cells = data.shops.map(s => cheapest(data.listings.filter(l => l.product === p.id && l.shop === s.id)));
+    const cells = data.shops.map(s => cheapest(inSet.filter(l => l.product === p.id && l.shop === s.id)));
     const live = cells.filter(c => c?.inStock);
     const best = live.length ? Math.min(...live.map(total)) : null;
     const td = cells.map(c => !c ? '<td class="num dim">–</td>'
@@ -162,8 +183,9 @@ function renderMatrix() {
 
 function select(id) {
   if (!data.present.some(p => p.id === id)) id = data.present[0]?.id;
+  if (!id) return; // set has no listings yet
   state.product = id;
-  history.replaceState(null, '', '#' + id);
+  history.replaceState(null, '', `#${state.set}/${id}`);
   document.getElementById('product').value = id;
   document.querySelectorAll('#matrix tbody tr').forEach(tr => tr.classList.toggle('sel', tr.dataset.id === id));
   document.getElementById('detail-title').textContent = 'Price history: ' + data.products.find(p => p.id === id).name;
@@ -172,7 +194,7 @@ function select(id) {
 
 // Replay change-only history to get each shop's cheapest price at every change point.
 function seriesFor(productId) {
-  const urls = new Map(data.listings.filter(l => l.product === productId).map(l => [l.url, l]));
+  const urls = new Map(inSet.filter(l => l.product === productId).map(l => [l.url, l]));
   const events = hist.filter(h => urls.has(h.url));
   const now = Date.now();
   return data.shops.map(shop => {
@@ -230,7 +252,7 @@ function renderChart() {
 
 function renderListings() {
   const onlyIn = document.getElementById('instock').checked;
-  const rows = data.listings.filter(l => l.product === state.product && (!onlyIn || l.inStock)).sort((a, b) => b.inStock - a.inStock || total(a) - total(b));
+  const rows = inSet.filter(l => l.product === state.product && (!onlyIn || l.inStock)).sort((a, b) => b.inStock - a.inStock || total(a) - total(b));
   document.getElementById('listings').innerHTML = `<thead><tr><th>Shop</th><th>Listing</th><th class="num">Price</th><th>Stock</th><th>Last change</th></tr></thead><tbody>` +
     rows.map(l => {
       const s = data.shopById[l.shop];

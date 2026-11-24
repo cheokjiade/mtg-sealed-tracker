@@ -3,8 +3,9 @@ import { readFileSync } from 'node:fs';
 import { classify, merge } from './core.mjs';
 import { parseMoney } from './adapters.mjs';
 
-const { products } = JSON.parse(readFileSync(new URL('../config.json', import.meta.url)));
-const c = t => classify(t, products);
+const { products, sets, shops } = JSON.parse(readFileSync(new URL('../config.json', import.meta.url)));
+const trk = sets.find(s => s.id === 'trk');
+const c = t => classify(t, trk, products);
 
 // classify: specific products must win over general ones
 assert.equal(c('[TRK] Star Trek Collector Booster Box'), 'collector-box');
@@ -30,21 +31,25 @@ assert.equal(c('Star Trek - Booster Fleet Bundle | Collector Booster Box + 2 x P
 assert.equal(c('Captain Pike, Fullness of Time [Star Trek]'), null); // single card
 assert.equal(c('Bloomburrow Play Booster Box'), null); // other set
 
+// config sanity
 const ids = products.map(p => p.id);
 assert.equal(new Set(ids).size, ids.length, 'product ids must be unique');
+for (const s of sets) for (const shop of Object.keys(s.sources)) assert.ok(shops.some(x => x.id === shop), `set ${s.id}: unknown shop ${shop}`);
+
 assert.equal(parseMoney('S$ 1,620.50'), 1620.5);
 
-// merge: change-only history, failed shop keeps data, delisted -> out of stock
+// merge: change-only history, failed shop keeps data, delisted -> out of stock, sets kept apart
 const L = (url, price, inStock) => ({ url, price, inStock, title: url, product: 'play-box' });
-const a = merge({ listings: [] }, [{ shop: 's', ok: true, listings: [L('u1', 100, true), L('u2', 50, true)] }], 't1');
+const a = merge({ listings: [] }, [{ shop: 's', set: 'x', ok: true, listings: [L('u1', 100, true), L('u2', 50, true)] }], 't1');
 assert.equal(a.history.length, 2);
-const b = merge(a, [{ shop: 's', ok: true, listings: [L('u1', 100, true)] }], 't2');
+const b = merge(a, [{ shop: 's', set: 'x', ok: true, listings: [L('u1', 100, true)] }], 't2');
 assert.deepEqual(b.history, [{ t: 't2', shop: 's', url: 'u2', price: 50, inStock: false }]);
 assert.equal(b.listings.find(l => l.url === 'u1').firstSeen, 't1');
-const d = merge(b, [{ shop: 's', ok: false }], 't3');
-assert.equal(d.history.length, 0);
-assert.equal(d.listings.length, 2);
-const e = merge(d, [{ shop: 's', ok: true, listings: [L('u1', 90, true), L('u2', 50, false)] }], 't4');
+const d = merge(b, [{ shop: 's', set: 'x', ok: false }, { shop: 's', set: 'y', ok: true, listings: [L('u3', 10, true)] }], 't3');
+assert.deepEqual(d.history.map(h => h.url), ['u3']); // set y's success doesn't delist set x's listings
+assert.equal(d.listings.length, 3);
+assert.equal(d.listings.find(l => l.url === 'u3').set, 'y');
+const e = merge(d, [{ shop: 's', set: 'x', ok: true, listings: [L('u1', 90, true), L('u2', 50, false)] }, { shop: 's', set: 'y', ok: false }], 't4');
 assert.deepEqual(e.history.map(h => [h.url, h.price]), [['u1', 90]]);
 
 console.log('all checks passed');

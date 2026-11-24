@@ -1,15 +1,14 @@
 // Pure logic (no network) so it can be tested: classifying titles and merging a run into stored data.
 
-const STAR_TREK = /star\s*trek|\bTR[KC]\b/i;
-
-// First matching product pattern wins, so config.json lists specific products before general ones.
-export function classify(title, products) {
-  if (!STAR_TREK.test(title)) return null;
+// The title must match the set's pattern; then the first matching product pattern wins,
+// so config.json lists specific products before general ones.
+export function classify(title, set, products) {
+  if (!new RegExp(set.match, 'i').test(title)) return null;
   return products.find(p => new RegExp(p.match, 'i').test(title))?.id ?? null;
 }
 
 // latest:  { listings: [...] } from the previous run (or empty)
-// results: [{ shop, ok, listings }] from this run
+// results: [{ shop, set, ok, listings }] from this run, one per shop × set source
 // History only gets a row when a listing's price or stock state changes, keeping the file small.
 export function merge(latest, results, now) {
   const prev = new Map(latest.listings.map(l => [l.url, l]));
@@ -18,14 +17,14 @@ export function merge(latest, results, now) {
   const record = l => history.push({ t: now, shop: l.shop, url: l.url, price: l.price, inStock: l.inStock });
 
   for (const r of results) {
-    const old = latest.listings.filter(l => l.shop === r.shop);
+    const old = latest.listings.filter(l => l.shop === r.shop && l.set === r.set);
     if (!r.ok) { listings.push(...old); continue; } // scrape failed: keep last known data
     const seen = new Set();
     for (const l of r.listings) {
       if (seen.has(l.url)) continue;
       seen.add(l.url);
       const p = prev.get(l.url);
-      const cur = { ...l, shop: r.shop, firstSeen: p?.firstSeen ?? now, lastSeen: now };
+      const cur = { ...l, shop: r.shop, set: r.set, firstSeen: p?.firstSeen ?? now, lastSeen: now };
       if (!p || p.price !== cur.price || p.inStock !== cur.inStock) record(cur);
       listings.push(cur);
     }

@@ -20,12 +20,26 @@
     { "id": "bundle", "name": "Bundle", "match": "bundle" }
   ],
   "shops": [
-    { "id": "greyogre", "name": "Grey Ogre Games", "type": "shopify", "url": "https://greyogregames.com/collections/star-trek-sealed-products" },
-    { "id": "onemtg", "name": "OneMTG", "type": "shopify", "url": "https://onemtg.com.sg/collections/star-trek-sealed" },
-    { "id": "hideout", "name": "Hideout", "type": "shopify", "url": "https://hideoutcg.com/collections/star-trek" },
-    { "id": "5mana", "name": "5-Mana", "type": "shopify", "url": "https://5-mana.sg/collections/star-trek-sealed-products" },
-    { "id": "wargames", "name": "Wargames Shop", "type": "woocommerce", "url": "https://wargamesshop.net", "search": "star trek" },
-    { "id": "mgw", "name": "MGW Games", "type": "easystore", "url": "https://mgwgames.com/collections/star-trek" },
-    { "id": "cardboard", "name": "Cardboard Collective", "type": "easystore", "url": "https://cardboard.sg/collections/star-trek" }
+    { "id": "greyogre", "name": "Grey Ogre Games", "type": "shopify", "url": "https://greyogregames.com" },
+    { "id": "onemtg", "name": "OneMTG", "type": "shopify", "url": "https://onemtg.com.sg" },
+    { "id": "hideout", "name": "Hideout", "type": "shopify", "url": "https://hideoutcg.com" },
+    { "id": "5mana", "name": "5-Mana", "type": "shopify", "url": "https://5-mana.sg" },
+    { "id": "wargames", "name": "Wargames Shop", "type": "woocommerce", "url": "https://wargamesshop.net" },
+    { "id": "mgw", "name": "MGW Games", "type": "easystore", "url": "https://mgwgames.com" },
+    { "id": "cardboard", "name": "Cardboard Collective", "type": "easystore", "url": "https://cardboard.sg" }
+  ],
+  "sets": [
+    {
+      "id": "trk", "name": "Star Trek", "match": "star\\s*trek|\\bTR[KC]\\b",
+      "sources": {
+        "greyogre": { "url": "https://greyogregames.com/collections/star-trek-sealed-products" },
+        "onemtg": { "url": "https://onemtg.com.sg/collections/star-trek-sealed" },
+        "hideout": { "url": "https://hideoutcg.com/collections/star-trek" },
+        "5mana": { "url": "https://5-mana.sg/collections/star-trek-sealed-products" },
+        "wargames": { "search": "star trek" },
+        "mgw": { "url": "https://mgwgames.com/collections/star-trek" },
+        "cardboard": { "url": "https://cardboard.sg/collections/star-trek" }
+      }
+    }
   ]
 }

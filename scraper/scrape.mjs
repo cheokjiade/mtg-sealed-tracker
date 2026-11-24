@@ -8,26 +8,39 @@ const dataDir = new URL('docs/data/', root);
 const readJson = async (url, fallback) => JSON.parse(await readFile(url, 'utf8').catch(() => JSON.stringify(fallback)));
 
 const config = await readJson(new URL('config.json', root));
-const only = process.argv[2]; // optional: `npm run scrape -- mgw` to run one shop
-const shops = config.shops.filter(s => !only || s.id === only);
+const shopById = Object.fromEntries(config.shops.map(s => [s.id, s]));
+const only = process.argv[2]; // optional: `npm run scrape -- mgw` (a shop) or `-- trk` (a set)
+
+// One job per shop × set: the set's source entry (collection url, search term...) overrides the shop's defaults.
+const jobs = config.sets.flatMap(set => Object.entries(set.sources).map(([shopId, source]) => {
+  if (!shopById[shopId]) throw new Error(`set ${set.id}: unknown shop "${shopId}"`);
+  return { set, shop: { ...shopById[shopId], ...source } };
+}));
+const run = jobs.filter(j => !only || j.shop.id === only || j.set.id === only);
+if (!run.length) throw new Error(`nothing matches "${only}"`);
 
 let browser;
 const results = [];
-for (const shop of shops) {
+for (const { set, shop } of jobs) {
+  const r = { shop: shop.id, set: set.id, ok: false };
+  results.push(r);
+  if (!run.some(j => j.set === set && j.shop.id === shop.id)) continue; // not run: keep old data
+  const label = `${shop.id}/${set.id}`;
   try {
     if (['playwright', 'easystore'].includes(shop.type)) browser ??= await chromium.launch();
     const raw = await adapters[shop.type](shop, browser);
-    const listings = [];
+    r.listings = [];
     for (const item of raw) {
-      const product = classify(item.title, config.products);
-      if (product) listings.push({ ...item, product });
+      const product = classify(item.title, set, config.products);
+      if (product) r.listings.push({ ...item, product });
       else console.log(`  skip (no product match): ${item.title}`);
     }
-    console.log(`${shop.id}: ${listings.length} listings (${raw.length} scraped)`);
-    results.push({ shop: shop.id, ok: true, listings });
+    r.ok = true;
+    console.log(`${label}: ${r.listings.length} listings (${raw.length} scraped)`);
   } catch (e) {
-    console.error(`${shop.id}: FAILED ${e.message}`);
-    results.push({ shop: shop.id, ok: false, error: e.message });
+    r.error = e.message;
+    r.ran = true;
+    console.error(`${label}: FAILED ${e.message}`);
   }
 }
 await browser?.close();
@@ -35,18 +48,19 @@ await browser?.close();
 const now = new Date().toISOString();
 const latest = await readJson(new URL('latest.json', dataDir), { listings: [] });
 const history = await readJson(new URL('history.json', dataDir), []);
-if (only) results.push(...config.shops.filter(s => s.id !== only).map(s => ({ shop: s.id, ok: false })));
-
 const merged = merge(latest, results, now);
+
 const prevStatus = Object.fromEntries((latest.shops ?? []).map(s => [s.id, s]));
 const out = {
   updated: now,
+  sets: config.sets.map(({ id, name }) => ({ id, name })),
   products: config.products.map(({ id, name }) => ({ id, name })),
   shops: config.shops.map(({ id, name, url, shipping = null }) => {
     const prev = prevStatus[id] ?? {};
-    if (!shops.some(s => s.id === id)) return { ...prev, id, name, url, shipping }; // not run this time
-    const r = results.find(x => x.shop === id);
-    return { id, name, url, shipping, ok: r.ok, error: r.error ?? null, lastOk: r.ok ? now : prev.lastOk ?? null };
+    const mine = results.filter(r => r.shop === id && (r.ok || r.ran));
+    if (!mine.length) return { ...prev, id, name, url, shipping }; // not run this time
+    const errors = mine.filter(r => !r.ok).map(r => `${r.set}: ${r.error}`);
+    return { id, name, url, shipping, ok: !errors.length, error: errors.join('; ') || null, lastOk: errors.length ? prev.lastOk ?? null : now };
   }),
   listings: merged.listings,
 };
@@ -56,4 +70,4 @@ await writeFile(new URL('latest.json', dataDir), JSON.stringify(out, null, 1));
 await writeFile(new URL('history.json', dataDir), JSON.stringify([...history, ...merged.history], null, 0).replace(/},{/g, '},\n{'));
 console.log(`${merged.history.length} price/stock changes recorded`);
 
-if (results.filter(r => shops.some(s => s.id === r.shop)).every(r => !r.ok)) process.exit(1);
+if (!results.some(r => r.ok)) process.exit(1); // everything failed: make the Action go red
