@@ -105,6 +105,9 @@ If a shop's scrape fails, its last known listings are kept. A listing that disap
 ## Not covered
 
 Shopee blocks headless browsers with a login / traffic-verification wall, so Shopee listings aren't scraped.
+Amazon often blocks GitHub's datacenter IPs ("Sorry! Something went wrong!"), so the Amazon benchmark only updates on runs
+that get through. A reliable feed would need Amazon's Product Advertising API (Associates account) or a paid service such as Keepa.
+Checked and skipped: Games Haven (singles only), PI (no web shop), Mana Pro, DX Collection, MTG Asia, Trading Card Arena (no online catalogue found).
 
 ## Local
 
