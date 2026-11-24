@@ -94,7 +94,9 @@ async function playwright(shop, browser) {
       // Never try to get past bot protection: fail the shop so its last good data is kept.
       const head = page.url() + ' ' + await page.title() + ' ' + (await page.innerText('body').catch(() => '')).slice(0, 1500);
       if (BOT_WALL.test(head)) throw new Error(`bot protection at ${page.url()}`);
-      await page.waitForSelector(shop.selectors.item, { timeout: 30_000 });
+      await page.waitForSelector(shop.selectors.item, { timeout: 30_000 }).catch(() => {
+        throw new Error(`no "${shop.selectors.item}" at ${page.url()} | page: ${head.replace(/\s+/g, ' ').slice(0, 300)}`);
+      });
       raw.push(...await page.$$eval(shop.selectors.item, (els, s) => els.map(el => {
         const q = sel => sel && el.querySelector(sel);
         return {
