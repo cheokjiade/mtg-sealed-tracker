@@ -160,4 +160,14 @@
 {"t":"2026-11-24T17:56:51.819Z","shop":"amazon","url":"https://www.amazon.com/dp/B0H6H7QSSD","price":84.02,"inStock":false},
 {"t":"2026-11-24T17:56:51.819Z","shop":"amazon","url":"https://www.amazon.com/dp/B0H6KHQQK7","price":221.03,"inStock":false},
 {"t":"2026-11-24T17:56:51.819Z","shop":"amazon","url":"https://www.amazon.com/dp/B0H6KSTCTN","price":221.03,"inStock":false},
-{"t":"2026-11-24T17:56:51.819Z","shop":"amazon","url":"https://www.amazon.com/dp/B0H6KLJFQ8","price":221.03,"inStock":false}]
+{"t":"2026-11-24T17:56:51.819Z","shop":"amazon","url":"https://www.amazon.com/dp/B0H6KLJFQ8","price":221.03,"inStock":false},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/collections/star-trek/products/mtg-trk-pbb-en","price":188,"inStock":true},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/collections/star-trek/products/mtg-star-trek-play-booster-pack","price":7,"inStock":true},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/collections/star-trek/products/mtg-star-trek-commander-deck-federation-fleet","price":75,"inStock":true},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/collections/star-trek/products/mtg-star-trek-commander-deck-landing-party","price":85,"inStock":true},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/collections/star-trek/products/mtg-star-trek-commander-deck-klingon-fury","price":65,"inStock":true},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/collections/star-trek/products/mtg-trk-prk-en","price":39,"inStock":true},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/products/cc-bdl-trk-cmdcombo-en?variant=80409761","price":268,"inStock":false},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/products/cc-bdl-trk-cmdcombo-en?variant=80409763","price":268,"inStock":false},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/products/mtg-trk-pbb-en?variant=80849371","price":200,"inStock":false},
+{"t":"2026-11-25T17:25:41.136Z","shop":"cardboard","url":"https://cardboard.sg/products/mtg-trk-pbb-en?variant=80849372","price":7,"inStock":false}]
